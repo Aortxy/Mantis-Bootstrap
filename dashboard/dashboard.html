@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard - Bot Hosting</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
+  <link rel="stylesheet" href="assets/fonts/feather.css">
+  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+  <link rel="stylesheet" href="assets/css/style-preset.css">
+  <style>
+    body { background-color: #f4f7fa !important; }
+    .pc-container { margin-top: 0; padding-top: 20px; }
+  </style>
+</head>
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <div class="loader-bg"><div class="loader-track"><div class="loader-fill"></div></div></div>
+
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="#" class="b-brand text-primary f-w-700" style="font-size: 1.5rem;">Dalang Store</a>
+      </div>
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item active"><a href="/dashboard.html" class="pc-link"><span class="pc-micon"><i class="ti ti-dashboard"></i></span><span class="pc-mtext">Dashboard</span></a></li>
+          <li class="pc-item"><a href="/admin.html" class="pc-link"><span class="pc-micon"><i class="ti ti-user-check"></i></span><span class="pc-mtext">Admin Panel</span></a></li>
+          <li class="pc-item"><a href="#" onclick="logout()" class="pc-link text-danger"><span class="pc-micon"><i class="ti ti-power"></i></span><span class="pc-mtext">Logout</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="pc-header">
+    <div class="header-wrapper">
+      <div class="me-auto pc-mob-drp">
+        <ul class="list-unstyled">
+          <li class="pc-h-item pc-sidebar-collapse"><a href="#" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a></li>
+          <li class="pc-h-item pc-sidebar-popup"><a href="#" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a></li>
+        </ul>
+      </div>
+      <div class="ms-auto">
+          <ul class="list-unstyled">
+              <li class="pc-h-item">
+                  <span class="f-w-600" id="user-display">Loading...</span>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="pc-container">
+    <div class="pc-content">
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title"><h5 class="m-b-10">Dashboard</h5></div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Dashboard</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Servers</h6>
+              <h4 class="mb-3" id="stat-total-servers">0</h4>
+              <p class="mb-0 text-muted text-sm">Servers created by you</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Active Status</h6>
+              <h4 class="mb-3">Online <span class="badge bg-light-success border border-success"><i class="ti ti-trending-up"></i> 100%</span></h4>
+              <p class="mb-0 text-muted text-sm">System is operational</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Resellers</h6>
+              <h4 class="mb-3">1 <span class="badge bg-light-warning border border-warning">Active</span></h4>
+              <p class="mb-0 text-muted text-sm">Verified reseller account</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Balance</h6>
+              <h4 class="mb-3" id="stat-balance">Rp 0</h4>
+              <p class="mb-0 text-muted text-sm">Available balance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Server Table -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5>Manage Servers</h5>
+              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createServerModal">Add Server</button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Memory</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="server-table-body">
+                    <tr><td colspan="5" class="text-center">Loading servers...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Server Modal -->
+  <div class="modal fade" id="createServerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create New Server</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form id="createServerForm">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Server Name</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">RAM Allocation</label>
+              <select class="form-select" name="ram" required>
+                <option value="1024">1GB</option>
+                <option value="2048">2GB</option>
+                <option value="4096">4GB</option>
+                <option value="8192">8GB</option>
+                <option value="10240">10GB</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create Server</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/plugins/popper.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.min.js"></script>
+  <script src="assets/js/pcoded.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = '/login.html';
+
+    async function fetchData() {
+      try {
+        const userRes = await fetch('/api/auth/me', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const userData = await userRes.json();
+        document.getElementById('user-display').innerText = userData.username;
+        document.getElementById('stat-balance').innerText = 'Rp ' + (userData.balance || 0).toLocaleString();
+
+        const serverRes = await fetch('/api/pterodactyl/servers', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const servers = await serverRes.json();
+        renderServers(servers);
+        document.getElementById('stat-total-servers').innerText = servers.length;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderServers(servers) {
+      const tbody = document.getElementById('server-table-body');
+      if (servers.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No servers found.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = servers.map(s => `
+        <tr>
+          <td>${s.serverId}</td>
+          <td>${s.name}</td>
+          <td>${s.memory}GB</td>
+          <td><span class="badge bg-light-success text-success">${s.status}</span></td>
+          <td>
+            <a href="${s.panelUrl}" target="_blank" class="btn btn-sm btn-info me-1">Manage</a>
+            <button onclick="deleteServer('${s.serverId}')" class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    document.getElementById('createServerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const payload = Object.fromEntries(formData);
+      Swal.fire({ title: 'Creating server...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+      try {
+        const res = await fetch('/api/pterodactyl/servers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          Swal.fire('Success', 'Server created successfully', 'success');
+          bootstrap.Modal.getInstance(document.getElementById('createServerModal')).hide();
+          fetchData();
+        } else {
+          Swal.fire('Error', data.message, 'error');
+        }
+      } catch (err) { Swal.fire('Error', 'Failed to create server', 'error'); }
+    });
+
+    async function deleteServer(id) {
+      const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch(`/api/pterodactyl/servers/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.ok) {
+            Swal.fire('Deleted!', 'Your server has been deleted.', 'success');
+            fetchData();
+          } else {
+            const data = await res.json();
+            Swal.fire('Error', data.message, 'error');
+          }
+        } catch (err) { Swal.fire('Error', 'Failed to delete server', 'error'); }
+      }
+    }
+    function logout() { localStorage.removeItem('token'); window.location.href = '/login.html'; }
+    fetchData();
+  </script>
+</body>
+</html>
