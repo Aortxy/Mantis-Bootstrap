@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bot Hosting - Landing Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
+  <link rel="stylesheet" href="assets/fonts/feather.css">
+  <link rel="stylesheet" href="assets/fonts/fontawesome.css">
+  <link rel="stylesheet" href="assets/fonts/material.css">
+  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+  <link rel="stylesheet" href="assets/css/style-preset.css">
+
+  <style>
+    body {
+      background-color: #f4f7fa !important;
+      color: #262626 !important;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .navbar {
+      background: #ffffff !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+        color: #262626 !important;
+        font-weight: 700;
+    }
+    .nav-link {
+        color: #262626 !important;
+    }
+    .card {
+      background: #ffffff !important;
+      border: none !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+      margin-bottom: 20px;
+      padding: 24px;
+    }
+    .pricing-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .pricing-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1890ff;
+        margin-bottom: 16px;
+    }
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    .pricing-features li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+    }
+    .pricing-features li i {
+        margin-right: 8px;
+        color: #52c41a;
+    }
+    .checkout-section {
+        margin-top: 40px;
+    }
+    .btn-primary {
+        background-color: #1890ff !important;
+        border-color: #1890ff !important;
+    }
+    .modal-content {
+        border-radius: 16px;
+        border: none;
+    }
+    #qris-container img {
+        max-width: 100%;
+        height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Dalang Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item ms-md-2">
+            <a class="btn btn-primary" href="/login.html">Login Reseller</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5" id="home">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center mb-5">
+        <h1 class="f-w-700">Premium Bot Hosting</h1>
+        <p class="text-muted">Fast, Reliable, and Secure hosting for your bots.</p>
+      </div>
+
+      <div class="col-md-6" id="pricing">
+        <div class="card pricing-card" onclick="selectPlan('9GB', 10000)">
+          <div class="pricing-title">9GB Ultimate</div>
+          <div class="pricing-price">Rp 10.000</div>
+          <ul class="pricing-features">
+            <li><i class="ti ti-check"></i> RAM: 9 GB</li>
+            <li><i class="ti ti-check"></i> CPU: 105%</li>
+            <li><i class="ti ti-check"></i> Disk: 9 GB</li>
+          </ul>
+        </div>
+
+        <div class="card pricing-card" onclick="selectPlan('10GB', 11000)">
+          <div class="pricing-title">10GB Master</div>
+          <div class="pricing-price">Rp 11.000</div>
+          <ul class="pricing-features">
+            <li><i class="ti ti-check"></i> RAM: 10 GB</li>
+            <li><i class="ti ti-check"></i> CPU: 110%</li>
+            <li><i class="ti ti-check"></i> Disk: 10 GB</li>
+          </ul>
+        </div>
+
+        <div class="card pricing-card" onclick="selectPlan('unlimited', 13000)">
+          <div class="pricing-title">UNLIMITED SULTAN</div>
+          <div class="pricing-price">Rp 13.000</div>
+          <ul class="pricing-features">
+            <li><i class="ti ti-check"></i> RAM: Unlimited</li>
+            <li><i class="ti ti-check"></i> CPU: Unlimited</li>
+            <li><i class="ti ti-check"></i> Disk: Unlimited</li>
+          </ul>
+        </div>
+
+        <div class="card pricing-card border-primary" onclick="selectPlan('reseller', 15000)">
+          <div class="pricing-title">Reseller Plan</div>
+          <div class="pricing-price">Rp 15.000</div>
+          <ul class="pricing-features">
+            <li><i class="ti ti-check"></i> Create Unlimited Servers</li>
+            <li><i class="ti ti-check"></i> Dashboard Access</li>
+            <li><i class="ti ti-check"></i> 24/7 Support</li>
+          </ul>
+        </div>
+
+        <div class="card checkout-section">
+          <h5 class="mb-4"><i class="ti ti-shopping-cart"></i> Checkout</h5>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Masukkan Username">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Masukkan Email">
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="f-w-600">TOTAL:</span>
+            <span class="f-w-700 text-primary" id="total-price">Rp 0</span>
+          </div>
+          <button class="btn btn-primary w-100 py-2" onclick="handlePayment()">Bayar Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QRIS Modal -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Pembayaran QRIS</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Silakan scan QR Code di bawah ini:</p>
+          <div id="qris-container" class="mb-3">
+              <!-- QR Code will be injected here -->
+          </div>
+          <p class="f-w-600 mb-1">Total Bayar: <span id="modal-total"></span></p>
+          <p class="text-muted small">ID Pesanan: <span id="modal-order-id"></span></p>
+          <div class="spinner-border text-primary mt-3" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2 text-info">Menunggu pembayaran...</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-outline-danger" onclick="cancelPayment()">Batalkan Pembayaran</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center py-5">
+          <i class="ti ti-circle-check text-success" style="font-size: 4rem;"></i>
+          <h3 class="mt-3">Pembayaran Berhasil!</h3>
+          <p id="success-message">Detail akun Anda telah dikirim ke email.</p>
+          <div id="credentials-box" class="text-start bg-light p-3 rounded mt-3 d-none">
+              <h6>Detail Akun:</h6>
+              <p class="mb-1"><strong>Panel URL:</strong> <span id="res-panel"></span></p>
+              <p class="mb-1"><strong>Username:</strong> <span id="res-user"></span></p>
+              <p class="mb-0"><strong>Password:</strong> <span id="res-pass"></span></p>
+          </div>
+          <button class="btn btn-primary mt-4 px-5" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/plugins/popper.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
+  <script>
+    let selectedPlan = null;
+    let selectedPrice = 0;
+    let pollInterval = null;
+
+    function selectPlan(plan, price) {
+      selectedPlan = plan;
+      selectedPrice = price;
+      document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('border', 'border-primary'));
+      event.currentTarget.classList.add('border', 'border-primary');
+      document.getElementById('total-price').innerText = 'Rp ' + price.toLocaleString();
+    }
+
+    async function handlePayment() {
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+
+      if (!selectedPlan) return Swal.fire('Error', 'Pilih paket terlebih dahulu', 'error');
+      if (!username || !email) return Swal.fire('Error', 'Lengkapi username dan email', 'error');
+
+      const result = await Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Apakah Benar Ingin Melanjutkan?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Lanjutkan',
+        cancelButtonText: 'Kembali',
+        confirmButtonColor: '#1890ff'
+      });
+
+      if (!result.isConfirmed) return;
+
+      try {
+        const res = await fetch('/api/payment/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username,
+            email,
+            plan: selectedPlan,
+            type: selectedPlan === 'reseller' ? 'reseller_registration' : 'direct_purchase'
+          })
+        });
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.message);
+
+        // Show QRIS
+        document.getElementById('modal-total').innerText = 'Rp ' + data.amount.toLocaleString();
+        document.getElementById('modal-order-id').innerText = data.orderId;
+
+        // Generate QR Code
+        const qr = qrcode(0, 'M');
+        qr.addData(data.paymentNumber);
+        qr.make();
+        document.getElementById('qris-container').innerHTML = qr.createImgTag(8);
+
+        const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        paymentModal.show();
+
+        // Start polling
+        pollStatus(data.orderId);
+
+      } catch (err) {
+        Swal.fire('Error', err.message, 'error');
+      }
+    }
+
+    function cancelPayment() {
+      if (pollInterval) clearInterval(pollInterval);
+      bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
+      Swal.fire('Dibatalkan', 'Pembayaran telah dibatalkan', 'info');
+    }
+
+    async function pollStatus(orderId) {
+      pollInterval = setInterval(async () => {
+        try {
+          const res = await fetch('/api/payment/status/' + orderId);
+          const data = await res.json();
+
+          if (data.status === 'completed') {
+            clearInterval(pollInterval);
+            bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
+
+            // Show Success
+            if (data.data) {
+                document.getElementById('credentials-box').classList.remove('d-none');
+                document.getElementById('res-panel').innerText = data.data.panel || 'Dashboard';
+                document.getElementById('res-user').innerText = data.data.username || data.data.user;
+                document.getElementById('res-pass').innerText = data.data.password || data.data.pass;
+            }
+            new bootstrap.Modal(document.getElementById('successModal')).show();
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }, 5000);
+    }
+  </script>
+</body>
+
+</html>

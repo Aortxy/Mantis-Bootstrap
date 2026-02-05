@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Panel - Bot Hosting</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
+  <link rel="stylesheet" href="assets/fonts/feather.css">
+  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+  <style>
+    body { background-color: #f4f7fa !important; }
+    .pc-container { margin-top: 0; padding-top: 20px; }
+  </style>
+</head>
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <div class="loader-bg"><div class="loader-track"><div class="loader-fill"></div></div></div>
+
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="#" class="b-brand text-primary f-w-700" style="font-size: 1.5rem;">Dalang Store Admin</a>
+      </div>
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item"><a href="/dashboard" class="pc-link"><span class="pc-micon"><i class="ti ti-dashboard"></i></span><span class="pc-mtext">Overview</span></a></li>
+          <li class="pc-item"><a href="/manage-servers" class="pc-link"><span class="pc-micon"><i class="ti ti-server"></i></span><span class="pc-mtext">Manage Servers</span></a></li>
+          <li class="pc-item active"><a href="/admin" class="pc-link"><span class="pc-micon"><i class="ti ti-user-check"></i></span><span class="pc-mtext">Admin Panel</span></a></li>
+          <li class="pc-item"><a href="#" onclick="logout()" class="pc-link text-danger"><span class="pc-micon"><i class="ti ti-power"></i></span><span class="pc-mtext">Logout</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="pc-header">
+    <div class="header-wrapper">
+      <div class="me-auto pc-mob-drp">
+        <ul class="list-unstyled">
+          <li class="pc-h-item pc-sidebar-collapse"><a href="#" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a></li>
+          <li class="pc-h-item pc-sidebar-popup"><a href="#" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="pc-container">
+    <div class="pc-content">
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title"><h5 class="m-b-10">Admin Panel</h5></div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Admin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Manage Resellers</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Balance</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="user-table-body">
+                    <tr><td colspan="5" class="text-center">Loading users...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/plugins/popper.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.min.js"></script>
+  <script src="assets/js/pcoded.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = '/login';
+
+    async function fetchUsers() {
+      try {
+        const res = await fetch('/api/admin/users', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.status === 403) {
+           Swal.fire('Access Denied', 'You do not have admin permissions', 'error').then(() => window.location.href = '/dashboard');
+           return;
+        }
+        const users = await res.json();
+        renderUsers(users);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderUsers(users) {
+      const tbody = document.getElementById('user-table-body');
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td>${u.username}</td>
+          <td>${u.email}</td>
+          <td>Rp ${u.balance.toLocaleString()}</td>
+          <td><span class="badge bg-light-primary text-primary">${u.role}</span></td>
+          <td>
+            <button onclick="deleteUser('${u._id}')" class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function deleteUser(id) {
+      const result = await Swal.fire({
+        title: 'Delete user?',
+        text: "This will remove the reseller account!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch(`/api/admin/users/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.ok) {
+            Swal.fire('Deleted!', 'User has been removed.', 'success');
+            fetchUsers();
+          } else {
+            const data = await res.json();
+            Swal.fire('Error', data.message, 'error');
+          }
+        } catch (err) { Swal.fire('Error', 'Failed to delete user', 'error'); }
+      }
+    }
+    function logout() { localStorage.removeItem('token'); window.location.href = '/login'; }
+    fetchUsers();
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Overview - Bot Hosting</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
+  <link rel="stylesheet" href="assets/fonts/feather.css">
+  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+  <style>
+    body { background-color: #f4f7fa !important; }
+    .pc-container { margin-top: 0; padding-top: 20px; }
+  </style>
+</head>
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <div class="loader-bg"><div class="loader-track"><div class="loader-fill"></div></div></div>
+
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="#" class="b-brand text-primary f-w-700" style="font-size: 1.5rem;">Dalang Store</a>
+      </div>
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item active"><a href="/dashboard" class="pc-link"><span class="pc-micon"><i class="ti ti-dashboard"></i></span><span class="pc-mtext">Overview</span></a></li>
+          <li class="pc-item"><a href="/manage-servers" class="pc-link"><span class="pc-micon"><i class="ti ti-server"></i></span><span class="pc-mtext">Manage Servers</span></a></li>
+          <li class="pc-item"><a href="/admin" class="pc-link"><span class="pc-micon"><i class="ti ti-user-check"></i></span><span class="pc-mtext">Admin Panel</span></a></li>
+          <li class="pc-item"><a href="#" onclick="logout()" class="pc-link text-danger"><span class="pc-micon"><i class="ti ti-power"></i></span><span class="pc-mtext">Logout</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="pc-header">
+    <div class="header-wrapper">
+      <div class="me-auto pc-mob-drp">
+        <ul class="list-unstyled">
+          <li class="pc-h-item pc-sidebar-collapse"><a href="#" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a></li>
+          <li class="pc-h-item pc-sidebar-popup"><a href="#" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a></li>
+        </ul>
+      </div>
+      <div class="ms-auto">
+          <ul class="list-unstyled">
+              <li class="pc-h-item">
+                  <span class="f-w-600" id="user-display">Loading...</span>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="pc-container">
+    <div class="pc-content">
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title"><h5 class="m-b-10">Overview</h5></div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Overview</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Servers</h6>
+              <h4 class="mb-3" id="stat-total-servers">0</h4>
+              <p class="mb-0 text-muted text-sm">Active servers managed by you</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Active Status</h6>
+              <h4 class="mb-3">Online <span class="badge bg-light-success text-success">100%</span></h4>
+              <p class="mb-0 text-muted text-sm">System operational</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Resellers</h6>
+              <h4 class="mb-3" id="stat-total-resellers">1</h4>
+              <p class="mb-0 text-muted text-sm">Verified resellers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Balance</h6>
+              <h4 class="mb-3" id="stat-balance">Rp 0</h4>
+              <p class="mb-0 text-muted text-sm">Available balance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header"><h5>Quick Actions</h5></div>
+                <div class="card-body">
+                    <a href="/manage-servers" class="btn btn-primary me-2">Manage Your Servers</a>
+                    <a href="/" class="btn btn-outline-primary">Go to Landing Page</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/plugins/popper.min.js"></script>
+  <script src="assets/js/plugins/bootstrap.min.js"></script>
+  <script src="assets/js/pcoded.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = '/login';
+
+    async function fetchData() {
+      try {
+        const statsRes = await fetch('/api/stats', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const stats = await statsRes.json();
+        document.getElementById('user-display').innerText = localStorage.getItem('username') || 'User';
+        document.getElementById('stat-balance').innerText = 'Rp ' + (stats.balance || 0).toLocaleString();
+        document.getElementById('stat-total-servers').innerText = stats.totalServers;
+        if (stats.totalResellers !== undefined) {
+            document.getElementById('stat-total-resellers').innerText = stats.totalResellers;
+        }
+      } catch (err) { console.error(err); }
+    }
+    function logout() { localStorage.removeItem('token'); window.location.href = '/login'; }
+    fetchData();
+  </script>
+</body>
+</html>
