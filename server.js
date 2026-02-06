@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
+const seedAdmin = require('./src/utils/seeder');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,7 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
+  .then(() => {
+    console.log('Connected to MongoDB');
+    seedAdmin();
+  })
   .catch(err => console.error('MongoDB connection error:', err));
 
 // API Routes
