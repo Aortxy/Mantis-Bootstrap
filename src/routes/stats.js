@@ -3,12 +3,19 @@ const router = express.Router();
 const { authenticate } = require('../middleware/auth');
 const User = require('../models/User');
 const Server = require('../models/Server');
+const { DEMO_USER } = require('../controllers/authController');
 
 router.get('/', authenticate, async (req, res) => {
   try {
     const userId = req.user.userId;
     const totalServers = await Server.countDocuments({ ownerId: userId });
-    const user = await User.findById(userId);
+
+    let user;
+    if (userId === DEMO_USER._id) {
+      user = DEMO_USER;
+    } else {
+      user = await User.findById(userId);
+    }
 
     // For admin, show global stats
     let globalStats = {};

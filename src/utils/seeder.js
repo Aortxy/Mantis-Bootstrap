@@ -17,24 +17,8 @@ const seedAdmin = async () => {
     } else {
       console.log('Admin user already exists. Skipping seeding.');
     }
-
-    // Seed Demo User
-    const demoExists = await User.findOne({ username: 'demo' });
-    if (!demoExists) {
-      const demo = new User({
-        username: 'demo',
-        email: 'demo@example.com',
-        password: 'demo',
-        role: 'reseller',
-        balance: 50000
-      });
-      await demo.save();
-      console.log('Demo user seeded successfully');
-    } else {
-      console.log('Demo user already exists. Skipping seeding.');
-    }
   } catch (err) {
-    console.error('Error seeding users:', err);
+    console.error('Error seeding admin user:', err);
   }
 };
 
