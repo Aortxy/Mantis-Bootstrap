@@ -2,64 +2,47 @@
 <html lang="en">
 
 <head>
-  <title>Dalang Store | Pterodactyl Hosting</title>
+  <title>Aortxy | Tempat Beli Panel!</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
-  <link rel="stylesheet" href="assets/css/style-preset.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+  <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css" >
+  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link" >
+  <link rel="stylesheet" href="assets/css/style-preset.css" >
   <link rel="stylesheet" href="assets/css/landing.css">
 
   <style>
-    /* Reset & Spacing */
-    body { background-color: #0f172a; }
-    .landing-page header { padding: 40px 0 30px; background: #0f172a; }
-    section { padding: 15px 0 !important; }
+    /* Rapiin Space */
+    .landing-page header { padding: 50px 0 30px; }
+    section { padding: 20px 0 !important; }
 
-    /* Card Style Dark (Sesuai Screenshot) */
-    .item-card { 
-      cursor: pointer; 
-      transition: all 0.2s ease; 
-      border: 1px solid #1e293b !important; 
-      background: #1e293b !important;
-      border-radius: 12px;
-    }
-    .item-card .card-header { border-bottom: 1px solid #334155; color: #f8fafc !important; font-weight: 600; }
-    .item-card .card-title { color: #22d3ee !important; font-weight: 700; }
-    .item-card .spec-text { color: #94a3b8 !important; font-size: 0.8rem; line-height: 1.4; }
-    
-    .item-card:hover { border-color: #22d3ee !important; }
+    /* Card Style Sesuai Request (Pake Header) */
+    .item-card { cursor: pointer; transition: 0.2s; border: 1px solid #e6ebf1 !important; }
+    .item-card:hover { border-color: #1890ff !important; }
     .item-card.selected { 
-      border: 2px solid #22d3ee !important; 
-      background-color: #1e293b !important;
-      box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+      border: 2px solid #1890ff !important; 
+      background-color: #f0f7ff !important; 
     }
-
-    /* Checkout Card Dark */
-    .checkout-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; color: #f8fafc; }
-    .checkout-card .form-control { background: #0f172a; border: 1px solid #334155; color: #fff; }
-    .checkout-card .form-control:focus { background: #0f172a; color: #fff; border-color: #22d3ee; }
-
-    /* Garis Pembatas Tebal */
-    .divider-bold {
-      border: 0;
-      height: 2px;
-      background: #334155;
+    
+    /* Garis Pembatas */
+    .divider-custom {
+      height: 3px;
+      background: #f0f0f0;
+      border: none;
       margin: 30px 0;
-      opacity: 1;
+      border-radius: 10px;
     }
 
-    /* Footer Bigger */
-    .footer-custom { 
-      padding: 40px 0; 
-      background: #0f172a; 
-      border-top: 1px solid #1e293b; 
-      color: #94a3b8;
+    /* Footer Gede */
+    .footer-big {
+      padding: 60px 0 30px;
+      background: #fafafb;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 40px;
     }
-    .footer-custom h5 { color: #f8fafc; }
   </style>
 </head>
 
@@ -67,15 +50,16 @@
   <nav class="navbar navbar-expand-md navbar-dark top-nav-collapse default">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <span class="h4 fw-bold text-white mb-0">Dalang<span class="text-info">Store</span></span>
+        <img src="assets/images/logo-white.svg" alt="logo">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="btn btn-info btn-sm mt-1 px-3" href="pages/login.html">Login</a></li>
+          <li class="nav-item pe-1"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="btn btn-primary btn-sm mt-1" href="pages/login.html">Login</a></li>
         </ul>
       </div>
     </div>
@@ -83,45 +67,43 @@
 
   <header>
     <div class="container text-center">
-      <h2 class="text-white mb-2 fw-bold">Pterodactyl Server Hosting</h2>
-      <p class="text-muted mb-4 px-md-5">Platform penyedia server hosting game dengan panel Pterodactyl terbaik dan harga termurah.</p>
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://wa.me/owner" class="btn btn-outline-info">Hubungi Owner</a>
-        <a href="pages/login.html" class="btn btn-info">Dashboard Reseller</a>
+      <h2 class="text-white mb-3 f-w-600">Platform Penyedia Server Hosting Game</h2>
+      <p class="text-white opacity-75 mb-4">Panel Pterodactyl terbaik dengan harga paling termurah.</p>
+      <div>
+        <a href="https://wa.me/owner" class="btn btn-outline-primary me-2">Hubungi Owner</a>
+        <a href="pages/login.html" class="btn btn-primary">Dashboard Reseller</a>
       </div>
     </div>
   </header>
 
-  <section id="order-section">
+  <section>
     <div class="container">
-      <div class="row g-2">
+      <div class="row g-3">
         <script>
-          const data = [
+          const dataPaket = [
             { n: '1GB Hemat', p: 1000, r: '1 GB', c: '40%' },
-            { n: '2GB Starter', p: 2000, r: '2 GB', c: '50%' },
-            { n: '3GB Medium', p: 3000, r: '3 GB', c: '60%' },
-            { n: '4GB Gaming', p: 5000, r: '4 GB', c: '70%' },
-            { n: '5GB Pro', p: 6000, r: '5 GB', c: '80%' },
-            { n: '6GB Streaming', p: 7000, r: '6 GB', c: '90%' },
-            { n: '7GB Advanced', p: 8000, r: '7 GB', c: '95%' },
-            { n: '8GB Extreme', p: 9000, r: '8 GB', c: '100%' },
-            { n: '9GB Ultimate', p: 10000, r: '9 GB', c: '105%' },
-            { n: '10GB Master', p: 11000, r: '10 GB', c: '110%' },
+            { n: '2GB Server', p: 2000, r: '2 GB', c: '50%' },
+            { n: '3GB Server', p: 3000, r: '3 GB', c: '60%' },
+            { n: '4GB Server', p: 5000, r: '4 GB', c: '70%' },
+            { n: '5GB Server', p: 6000, r: '5 GB', c: '80%' },
+            { n: '6GB Server', p: 7000, r: '6 GB', c: '90%' },
+            { n: '7GB Server', p: 8000, r: '7 GB', c: '95%' },
+            { n: '8GB Server', p: 9000, r: '8 GB', c: '100%' },
+            { n: '9GB Server', p: 10000, r: '9 GB', c: '105%' },
+            { n: '10GB Server', p: 11000, r: '10 GB', c: '110%' },
             { n: 'UNLIMITED SULTAN', p: 13000, r: 'Unlimited', c: 'Unlimited' }
           ];
 
-          data.forEach(s => {
+          dataPaket.forEach(pkg => {
             document.write(`
-              <div class="col-6 col-md-4 col-xl-3">
-                <div class="card item-card mb-2" onclick="selectAndScroll(this, '${s.n}', ${s.p}, '${s.r}')">
-                  <div class="card-header py-2 px-3">${s.n}</div>
-                  <div class="card-body p-3">
-                    <h4 class="card-title mb-2">Rp ${s.p.toLocaleString('id-ID')}</h4>
-                    <div class="spec-text">
-                      <i class="ti ti-device-sd-card"></i> RAM: ${s.r}<br>
-                      <i class="ti ti-cpu"></i> CPU: ${s.c}<br>
-                      <i class="ti ti-database"></i> Disk: ${s.r}
-                    </div>
+              <div class="col-sm-6 col-md-4 col-xl-3">
+                <div class="card bg-light item-card" onclick="pilihPaket(this, '${pkg.n}', ${pkg.p}, '${pkg.r}')">
+                  <div class="card-header text-muted fw-bold">${pkg.n}</div>
+                  <div class="card-body">
+                    <h5 class="card-title text-muted">Rp ${pkg.p.toLocaleString('id-ID')}</h5>
+                    <p class="card-text text-muted small mb-0">
+                      RAM: ${pkg.r}<br>CPU: ${pkg.c}<br>Disk: ${pkg.r}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -130,30 +112,23 @@
         </script>
       </div>
 
-      <hr class="divider-bold">
+      <hr class="divider-custom">
 
-      <div class="row justify-content-center" id="checkout-anchor">
-        <div class="col-md-6 col-lg-5">
-          <div class="card checkout-card shadow-lg">
-            <div class="card-body p-4">
-              <h5 class="text-white mb-4"><i class="ti ti-shopping-cart text-info me-2"></i>Checkout Order</h5>
+      <div class="row justify-content-center" id="checkout-section">
+        <div class="col-md-6">
+          <div class="card bg-light border">
+            <div class="card-header fw-bold text-muted">Checkout</div>
+            <div class="card-body">
               <div class="mb-3">
-                <label class="form-label small fw-bold">Username Panel</label>
-                <input type="text" id="username" class="form-control" placeholder="Masukkan username...">
+                <input type="text" id="username" class="form-control" placeholder="Masukkan Username.">
               </div>
-              <div class="bg-dark p-3 rounded mb-4">
-                <div class="d-flex justify-content-between mb-1 small">
-                  <span class="text-muted">Paket:</span><span id="res-name" class="fw-bold text-info">-</span>
-                </div>
-                <div class="d-flex justify-content-between small">
-                  <span class="text-muted">RAM:</span><span id="res-ram">-</span>
+              <div class="p-3 bg-white rounded border mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="text-muted small">TOTAL:</span>
+                  <span class="h5 mb-0 text-primary" id="total-text">Rp 1.000</span>
                 </div>
               </div>
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0">TOTAL:</h5>
-                <h3 class="mb-0 text-info" id="res-price">Rp 0</h3>
-              </div>
-              <button class="btn btn-info w-100 py-2 fw-bold" onclick="process()">Bayar Sekarang</button>
+              <button class="btn btn-primary w-100" onclick="alert('Gas bayar!')">Bayar Sekarang</button>
             </div>
           </div>
         </div>
@@ -161,11 +136,12 @@
     </div>
   </section>
 
-  <footer class="footer-custom text-center mt-5">
+  <footer class="footer-big text-center">
     <div class="container">
-      <h5 class="mb-2">Dalang Store</h5>
-      <p class="mb-0">© 2026 All Rights Reserved.</p>
-      <p class="small opacity-50">Build by AortaVx</p>
+      <img src="assets/images/logo-dark.svg" alt="logo" class="mb-3" width="100">
+      <p class="mb-2 fw-bold text-dark">Aortxy Store - High Performance Hosting</p>
+      <p class="text-muted small mb-0">© 2026 All Rights Reserved.</p>
+      <p class="text-muted small">Powered by Aorta | Build by <strong>AortaVx</strong></p>
     </div>
   </footer>
 
@@ -173,29 +149,14 @@
   <script src="assets/js/plugins/bootstrap.min.js"></script>
 
   <script>
-    let selectedPkg = { name: '', price: 0 };
-
-    function selectAndScroll(el, name, price, ram) {
+    function pilihPaket(el, name, price, ram) {
       document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
       el.classList.add('selected');
 
-      selectedPkg.name = name;
-      selectedPkg.price = price;
-      document.getElementById('res-name').innerText = name;
-      document.getElementById('res-ram').innerText = ram;
-      document.getElementById('res-price').innerText = 'Rp ' + price.toLocaleString('id-ID');
+      document.getElementById('total-text').innerText = 'Rp ' + price.toLocaleString('id-ID');
 
-      // Auto Scroll
-      document.getElementById('checkout-anchor').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function process() {
-      const user = document.getElementById('username').value;
-      if (!selectedPkg.name || !user) {
-        alert("Pilih paket dan isi username!");
-        return;
-      }
-      alert(`Pesanan ${selectedPkg.name} untuk user ${user} dikirim!`);
+      // Auto scroll ke bawah (checkout)
+      document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   </script>
 </body>
