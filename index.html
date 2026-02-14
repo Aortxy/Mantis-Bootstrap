@@ -2,522 +2,148 @@
 <html lang="en">
 
 <head>
-  <title>Dalang Store - Order Pterodactyl Server</title>
-  <!-- [Meta] -->
+  <title>Mantis HTML Admin Template | Order Pterodactyl</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Order your Pterodactyl game server hosting">
-  <meta name="keywords" content="Pterodactyl, Game Server, Hosting, VPS">
-  <meta name="author" content="Dalang Store">
+  <meta name="description" content="Mantis is made using Bootstrap 5 design framework.">
+  <meta name="author" content="CodedThemes">
 
-  <!-- [Favicon] icon -->
   <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
-  <!-- [Page specific CSS] start -->
-  <link href="assets/css/plugins/animate.min.css" rel="stylesheet" type="text/css">
-  <!-- [Page specific CSS] end -->
-  <!-- [Google Font] Family -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
-  <!-- [Tabler Icons] https://tablericons.com -->
   <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css" >
-  <!-- [Feather Icons] https://feathericons.com -->
-  <link rel="stylesheet" href="assets/fonts/feather.css" >
-  <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-  <link rel="stylesheet" href="assets/fonts/fontawesome.css" >
-  <!-- [Material Icons] https://fonts.google.com/icons -->
-  <link rel="stylesheet" href="assets/fonts/material.css" >
-  <!-- [Template CSS Files] -->
   <link rel="stylesheet" href="assets/css/style.css" id="main-style-link" >
   <link rel="stylesheet" href="assets/css/style-preset.css" >
-
   <link rel="stylesheet" href="assets/css/landing.css">
-  
+
   <style>
-    .pricing-card {
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-    
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
-    }
-    
-    .pricing-card.selected {
-      border: 2px solid #007bff;
-      background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(255, 255, 255, 0.95));
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-    }
-    
-    .card-price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #007bff;
-      margin: 0.5rem 0;
-    }
-    
-    .checkout-section {
-      background: #f8f9fa;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      margin-top: 3rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .spec-list {
-      list-style: none;
-      padding-left: 0;
-    }
-    
-    .spec-list li {
-      padding: 0.3rem 0;
-      color: #6c757d;
-    }
-    
-    .spec-list li i {
-      color: #007bff;
-      margin-right: 0.5rem;
-    }
-    
-    .btn-checkout {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-    
-    .selected-package-info {
-      background: white;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid #007bff;
-    }
-    
-    .total-price {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #007bff;
-    }
+    /* Hanya CSS fungsional untuk fitur pilih paket */
+    .item-card { cursor: pointer; transition: 0.3s; border: 2px solid transparent !important; }
+    .item-card.selected { border: 2px solid #1890ff !important; background-color: rgba(24, 144, 255, 0.05) !important; }
+    .sticky-top-card { position: sticky; top: 100px; z-index: 10; }
   </style>
 </head>
 
 <body class="landing-page">
-
-  <!-- [ Pre-loader ] start -->
-  <div class="loader-bg">
-    <div class="loader-track">
-      <div class="loader-fill"></div>
-    </div>
-  </div>
-  <!-- [ Pre-loader ] End -->
-
-  <!-- [ Header ] start -->
   <header id="home">
-    <!-- [ Nav ] start -->
     <nav class="navbar navbar-expand-md navbar-dark top-nav-collapse default">
       <div class="container">
         <a class="navbar-brand" href="#">
           <img src="assets/images/logo-white.svg" alt="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item pe-1">
-              <a class="nav-link" href="#">Hubungi Owner</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary" href="pages/login.html">Dashboard Reseller</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
-    <!-- [ Nav ] End -->
     <div class="container">
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-md-9 col-xl-6">
-          <h1 class="mt-sm-3 text-white mb-4 f-w-600 wow fadeInUp" data-wow-delay="0.2s">Order Your
-            <span class="text-primary">Pterodactyl Server</span>
+          <h1 class="mt-sm-3 text-white mb-4 f-w-600 wow fadeInUp" data-wow-delay="0.2s">
+            Beli Server <span class="text-primary">Pterodactyl</span> Berkualitas
           </h1>
-          <h5 class="mb-4 text-white opacity-75 wow fadeInUp" data-wow-delay="0.4s">Premium game server hosting with powerful resources and unlimited possibilities</h5>
+          <h5 class="mb-4 text-white opacity-75 wow fadeInUp" data-wow-delay="0.4s">
+            Platform penyedia server hosting game dengan panel Pterodactyl terbaik dan harga termurah.
+          </h5>
           <div class="my-5 wow fadeInUp" data-wow-delay="0.6s">
-            <a href="#pricing" class="btn btn-primary btn-lg">
-              <i class="ti ti-shopping-cart me-1"></i> Choose Your Plan
-            </a>
+            <a href="#" class="btn btn-outline-primary me-2">Hubungi Owner</a>
+            <a href="pages/login.html" class="btn btn-primary">Dashboard Reseller</a>
           </div>
         </div>
       </div>
     </div>
   </header>
-  <!-- [ Header ] End -->
-
-  <!-- [ Pricing Section ] start -->
-  <section class="py-5" id="pricing">
+  <section class="py-5 bg-white">
     <div class="container">
-      <div class="row mb-4">
-        <div class="col-12 text-center">
-          <h2 class="mb-3">Choose Your Server Package</h2>
-          <p class="text-muted">Select the perfect plan for your gaming needs</p>
-        </div>
-      </div>
-
-      <div class="row" id="pricingCards">
-        <!-- Cards will be generated by JavaScript -->
-      </div>
-    </div>
-  </section>
-  <!-- [ Pricing Section ] End -->
-
-  <!-- [ Checkout Section ] start -->
-  <section class="py-5 bg-light" id="checkout">
-    <div class="container">
-      <div class="row justify-content-center">
+      <div class="row">
         <div class="col-lg-8">
-          <div class="checkout-section">
-            <h3 class="mb-4">
-              <i class="ti ti-shopping-cart me-2"></i>Checkout
-            </h3>
-
-            <div id="selectedPackageInfo" class="selected-package-info" style="display: none;">
-              <h5 class="mb-2">Selected Package:</h5>
-              <h4 id="selectedPackageName" class="text-primary mb-0"></h4>
-            </div>
-
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control form-control-lg" id="username" placeholder="Enter your username" required>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h5 class="mb-0">Total:</h5>
-                  <div class="total-price" id="totalPrice">Rp 0</div>
-                </div>
-                <div id="packageSpecs" class="text-muted" style="display: none;">
-                  <!-- Package specs will be displayed here -->
+          <div class="row g-3">
+            
+            <div class="col-sm-6 col-md-4">
+              <div class="card bg-light item-card" onclick="pilihPaket(this, '1GB Hemat', 1000, '1 GB')">
+                <div class="card-header text-muted fw-bold">1GB Hemat</div>
+                <div class="card-body">
+                  <h5 class="card-title text-muted">Rp 1.000</h5>
+                  <p class="card-text text-muted small">RAM: 1 GB<br>CPU: 40%<br>Disk: 1 GB</p>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn-primary btn-checkout" id="checkoutBtn" disabled>
-              <i class="ti ti-check me-2"></i>Complete Order
-            </button>
+            <script>
+              const listRAM = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+              const listHarga = [2000, 3000, 5000, 6000, 7000, 8000, 9000, 10000, 11000];
+              
+              listRAM.forEach((ram, index) => {
+                document.write(`
+                  <div class="col-sm-6 col-md-4">
+                    <div class="card bg-light item-card" onclick="pilihPaket(this, '${ram}GB Server', ${listHarga[index]}, '${ram} GB')">
+                      <div class="card-header text-muted fw-bold">${ram}GB Server</div>
+                      <div class="card-body">
+                        <h5 class="card-title text-muted">Rp ${listHarga[index].toLocaleString('id-ID')}</h5>
+                        <p class="card-text text-muted small">RAM: ${ram} GB<br>CPU: ${40 + (index * 10)}%<br>Disk: ${ram} GB</p>
+                      </div>
+                    </div>
+                  </div>
+                `);
+              });
+            </script>
 
-            <p class="text-center text-muted mt-3 mb-0">
-              <small>By completing this order, you agree to our terms and conditions</small>
-            </p>
+            <div class="col-sm-12 col-md-4">
+              <div class="card bg-light item-card" onclick="pilihPaket(this, 'UNLIMITED SULTAN', 13000, 'Unlimited')">
+                <div class="card-header text-muted fw-bold">UNLIMITED SULTAN</div>
+                <div class="card-body">
+                  <h5 class="card-title text-muted">Rp 13.000</h5>
+                  <p class="card-text text-muted small">RAM: Unlimited<br>CPU: Unlimited<br>Disk: Unlimited</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card bg-light sticky-top-card">
+            <div class="card-header fw-bold">Checkout Pesanan</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="form-label text-muted">Username Panel</label>
+                <input type="text" id="userPanel" class="form-control" placeholder="Input username...">
+              </div>
+              <hr>
+              <p class="text-muted mb-1">Paket: <span id="res-paket" class="fw-bold">-</span></p>
+              <p class="text-muted mb-3">RAM: <span id="res-ram">-</span></p>
+              <h4 class="text-dark mb-4">Total: <span id="res-harga">Rp 0</span></h4>
+              <button class="btn btn-primary w-100" onclick="prosesBayar()">Bayar Sekarang</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- [ Checkout Section ] End -->
 
-  <!-- [ Footer ] start -->
-  <footer class="py-4 bg-dark text-white text-center">
-    <div class="container">
-      <p class="mb-0">© 2026 Dalang Store. All Rights Reserved.</p>
-    </div>
-  </footer>
-  <!-- [ Footer ] End -->
-
-  <!-- Required Js -->
   <script src="assets/js/plugins/popper.min.js"></script>
-  <script src="assets/js/plugins/simplebar.min.js"></script>
   <script src="assets/js/plugins/bootstrap.min.js"></script>
-  <script src="assets/js/fonts/custom-font.js"></script>
-  <script src="assets/js/pcoded.js"></script>
-  <script src="assets/js/plugins/feather.min.js"></script>
-  
+
   <script>
-    // Package data
-    const packages = [
-      {
-        id: 1,
-        name: "1GB Hemat",
-        price: 1000,
-        specs: {
-          ram: "1 GB",
-          cpu: "40%",
-          disk: "1 GB"
-        }
-      },
-      {
-        id: 2,
-        name: "2GB Starter",
-        price: 2000,
-        specs: {
-          ram: "2 GB",
-          cpu: "50%",
-          disk: "2 GB"
-        }
-      },
-      {
-        id: 3,
-        name: "3GB Medium",
-        price: 3000,
-        specs: {
-          ram: "3 GB",
-          cpu: "60%",
-          disk: "3 GB"
-        }
-      },
-      {
-        id: 4,
-        name: "4GB Gaming",
-        price: 5000,
-        specs: {
-          ram: "4 GB",
-          cpu: "70%",
-          disk: "4 GB"
-        }
-      },
-      {
-        id: 5,
-        name: "5GB Pro",
-        price: 6000,
-        specs: {
-          ram: "5 GB",
-          cpu: "80%",
-          disk: "5 GB"
-        }
-      },
-      {
-        id: 6,
-        name: "6GB Streaming",
-        price: 7000,
-        specs: {
-          ram: "6 GB",
-          cpu: "90%",
-          disk: "6 GB"
-        }
-      },
-      {
-        id: 7,
-        name: "7GB Advanced",
-        price: 8000,
-        specs: {
-          ram: "7 GB",
-          cpu: "95%",
-          disk: "7 GB"
-        }
-      },
-      {
-        id: 8,
-        name: "8GB Extreme",
-        price: 9000,
-        specs: {
-          ram: "8 GB",
-          cpu: "100%",
-          disk: "8 GB"
-        }
-      },
-      {
-        id: 9,
-        name: "9GB Ultimate",
-        price: 10000,
-        specs: {
-          ram: "9 GB",
-          cpu: "105%",
-          disk: "9 GB"
-        }
-      },
-      {
-        id: 10,
-        name: "10GB Master",
-        price: 11000,
-        specs: {
-          ram: "10 GB",
-          cpu: "110%",
-          disk: "10 GB"
-        }
-      },
-      {
-        id: 11,
-        name: "UNLIMITED SULTAN",
-        price: 13000,
-        specs: {
-          ram: "Unlimited",
-          cpu: "Unlimited",
-          disk: "Unlimited"
-        }
-      }
-    ];
+    let dataOrder = { nama: "", harga: 0 };
 
-    let selectedPackage = null;
+    function pilihPaket(el, nama, harga, ram) {
+      document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      
+      dataOrder.nama = nama;
+      dataOrder.harga = harga;
 
-    // Generate pricing cards
-    function generateCards() {
-      const container = document.getElementById('pricingCards');
-      container.innerHTML = packages.map(pkg => `
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-          <div class="card bg-light pricing-card" onclick="selectPackage(${pkg.id})">
-            <div class="card-header text-muted">${pkg.name}</div>
-            <div class="card-body">
-              <div class="card-price">Rp ${pkg.price.toLocaleString('id-ID')}</div>
-              <ul class="spec-list">
-                <li><i class="ti ti-cpu"></i> RAM: ${pkg.specs.ram}</li>
-                <li><i class="ti ti-server"></i> CPU: ${pkg.specs.cpu}</li>
-                <li><i class="ti ti-database"></i> Disk: ${pkg.specs.disk}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      `).join('');
+      document.getElementById('res-paket').innerText = nama;
+      document.getElementById('res-ram').innerText = ram;
+      document.getElementById('res-harga').innerText = 'Rp ' + harga.toLocaleString('id-ID');
     }
 
-    // Select package function
-    function selectPackage(id) {
-      selectedPackage = packages.find(pkg => pkg.id === id);
-      
-      // Remove selected class from all cards
-      document.querySelectorAll('.pricing-card').forEach(card => {
-        card.classList.remove('selected');
-      });
-      
-      // Add selected class to clicked card
-      event.currentTarget.classList.add('selected');
-      
-      // Update checkout section
-      document.getElementById('selectedPackageInfo').style.display = 'block';
-      document.getElementById('selectedPackageName').textContent = selectedPackage.name;
-      document.getElementById('totalPrice').textContent = `Rp ${selectedPackage.price.toLocaleString('id-ID')}`;
-      
-      // Show package specs
-      const specsDiv = document.getElementById('packageSpecs');
-      specsDiv.style.display = 'block';
-      specsDiv.innerHTML = `
-        <div class="row">
-          <div class="col-4 text-center">
-            <i class="ti ti-cpu fs-4 d-block mb-1"></i>
-            <small>RAM: ${selectedPackage.specs.ram}</small>
-          </div>
-          <div class="col-4 text-center">
-            <i class="ti ti-server fs-4 d-block mb-1"></i>
-            <small>CPU: ${selectedPackage.specs.cpu}</small>
-          </div>
-          <div class="col-4 text-center">
-            <i class="ti ti-database fs-4 d-block mb-1"></i>
-            <small>Disk: ${selectedPackage.specs.disk}</small>
-          </div>
-        </div>
-      `;
-      
-      // Update checkout button
-      updateCheckoutButton();
-      
-      // Smooth scroll to checkout section
-      const checkoutSection = document.getElementById('checkout');
-      checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Update checkout button state
-    function updateCheckoutButton() {
-      const username = document.getElementById('username').value.trim();
-      const btn = document.getElementById('checkoutBtn');
-      
-      if (selectedPackage && username) {
-        btn.disabled = false;
-      } else {
-        btn.disabled = true;
-      }
-    }
-
-    // Handle checkout
-    document.getElementById('checkoutBtn').addEventListener('click', function() {
-      const username = document.getElementById('username').value.trim();
-      
-      if (!selectedPackage) {
-        alert('Please select a package first!');
+    function prosesBayar() {
+      const user = document.getElementById('userPanel').value;
+      if (!dataOrder.nama || !user) {
+        alert("Pilih paket dan isi username dulu!");
         return;
       }
-      
-      if (!username) {
-        alert('Please enter your username!');
-        return;
-      }
-
-      // Show order confirmation
-      const confirmMsg = `Order Summary:
-      
-Package: ${selectedPackage.name}
-Username: ${username}
-Total: Rp ${selectedPackage.price.toLocaleString('id-ID')}
-
-Specs:
-- RAM: ${selectedPackage.specs.ram}
-- CPU: ${selectedPackage.specs.cpu}
-- Disk: ${selectedPackage.specs.disk}
-
-Confirm this order?`;
-
-      if (confirm(confirmMsg)) {
-        alert('Order placed successfully! You will be contacted shortly for payment confirmation.');
-        
-        // Reset form
-        document.getElementById('username').value = '';
-        selectedPackage = null;
-        document.querySelectorAll('.pricing-card').forEach(card => {
-          card.classList.remove('selected');
-        });
-        document.getElementById('selectedPackageInfo').style.display = 'none';
-        document.getElementById('totalPrice').textContent = 'Rp 0';
-        document.getElementById('packageSpecs').style.display = 'none';
-        updateCheckoutButton();
-      }
-    });
-
-    // Listen to username input
-    document.getElementById('username').addEventListener('input', updateCheckoutButton);
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-      generateCards();
-      
-      // Layout settings
-      if (typeof layout_change !== 'undefined') {
-        layout_change('light');
-      }
-      if (typeof change_box_container !== 'undefined') {
-        change_box_container('false');
-      }
-      if (typeof layout_rtl_change !== 'undefined') {
-        layout_rtl_change('false');
-      }
-      if (typeof preset_change !== 'undefined') {
-        preset_change("preset-1");
-      }
-      if (typeof font_change !== 'undefined') {
-        font_change("Public-Sans");
-      }
-    });
-
-    // Navbar scroll behavior
-    let ost = 0;
-    document.addEventListener('scroll', function () {
-      let cOst = document.documentElement.scrollTop;
-      const navbar = document.querySelector(".navbar");
-      
-      if (navbar) {
-        if (cOst == 0) {
-          navbar.classList.add("top-nav-collapse");
-        } else if (cOst > ost) {
-          navbar.classList.add("top-nav-collapse");
-          navbar.classList.remove("default");
-        } else {
-          navbar.classList.add("default");
-          navbar.classList.remove("top-nav-collapse");
-        }
-      }
-      ost = cOst;
-    });
+      alert("Pesanan " + dataOrder.nama + " untuk " + user + " akan diproses.");
+    }
   </script>
 </body>
-
 </html>
