@@ -1,128 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Mantis | Pterodactyl Order Server</title>
+  <title>Dalang Store | Pterodactyl Hosting</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="assets/fonts/tabler-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/style-preset.css">
   <link rel="stylesheet" href="assets/css/landing.css">
 
   <style>
-    /* Background Grid Custom */
-    body {
-      background-color: #191a1a;
+    /* Hero Section Hitam Solid */
+    .hero-custom {
+      background: #000000;
+      padding: 80px 0 60px;
+      text-align: center;
+      color: white;
+    }
+    .hero-custom h1 { font-weight: 700; font-size: 2.5rem; }
+    .hero-custom .text-blue { color: #1890ff; }
+
+    /* Bagian Container dengan Grid Background */
+    .grid-container {
+      width: 100%;
+      padding: 40px 0;
       --color: rgba(114, 114, 114, 0.3);
-      background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
-          linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+      background-color: #191a1a;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
       background-size: 55px 55px;
-      color: #fff;
     }
 
-    .landing-page header { padding: 40px 0 20px; background: transparent; }
-    section { padding: 10px 0 !important; }
-
-    /* Card Styling */
+    /* Styling Card */
     .item-card { 
       cursor: pointer; 
       transition: 0.2s; 
       border: 1px solid rgba(255,255,255,0.1) !important; 
-      background: rgba(30, 31, 31, 0.8) !important;
-      backdrop-filter: blur(4px);
+      background: rgba(30, 31, 31, 0.9) !important;
+      color: white;
     }
-    .item-card .card-header { background: rgba(255,255,255,0.05); color: #eee !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .item-card .card-title { color: #1890ff !important; }
-    .item-card.selected { 
-      border: 2px solid #1890ff !important; 
-      background-color: rgba(24, 144, 255, 0.1) !important; 
-    }
-    
-    /* Divider */
-    .divider-custom {
-      height: 2px;
-      background: rgba(255,255,255,0.1);
-      margin: 25px 0;
-      border: none;
+    .item-card.selected { border: 2px solid #1890ff !important; background: rgba(24, 144, 255, 0.1) !important; }
+    .item-card .card-header { background: transparent; color: #fff !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    .divider-bold {
+      height: 4px;
+      background: #1890ff;
+      width: 100px;
+      margin: 40px auto;
+      border-radius: 10px;
     }
 
-    /* Footer */
-    .footer-custom {
-      padding: 40px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 30px;
+    footer {
+      padding: 50px 0;
+      background: #000;
+      color: #777;
+      text-align: center;
+      border-top: 1px solid #222;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 576px) {
-      .card-body { padding: 1rem; }
-      h2 { font-size: 1.5rem; }
-    }
+    footer strong { color: #fff; }
   </style>
 </head>
 
 <body class="landing-page">
-  <nav class="navbar navbar-expand-md navbar-dark top-nav-collapse default">
+  <nav class="navbar navbar-expand-md navbar-dark default top-nav-collapse">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <h4 class="text-white mb-0">Dalang<span class="text-primary">Store</span></h4>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggler">
+      <a class="navbar-brand" href="#"><strong>DalangStore</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navRes"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navRes">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="btn btn-primary btn-sm mt-1 px-3" href="pages/login.html">Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header>
-    <div class="container text-center">
-      <h2 class="text-white mb-2 fw-bold">Platform Penyedia Server Hosting Game</h2>
-      <p class="text-white opacity-75 mb-3">Panel Pterodactyl terbaik dengan harga paling termurah.</p>
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://wa.me/owner" class="btn btn-outline-primary">Hubungi Owner</a>
+  <div class="hero-custom">
+    <div class="container">
+      <h1>Beli Server <span class="text-blue">Pterodactyl</span> Berkualitas</h1>
+      <p class="opacity-75 mt-3">Platform penyedia server hosting game dengan panel<br>Pterodactyl terbaik dan harga termurah.</p>
+      <div class="mt-4">
+        <a href="#" class="btn btn-outline-primary me-2">Hubungi Owner</a>
         <a href="pages/login.html" class="btn btn-primary">Dashboard Reseller</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <section>
+  <div class="grid-container">
     <div class="container">
-      <div class="row g-2">
+      <div class="row g-3">
         <script>
-          const dataPaket = [
-            { n: '1GB Hemat', p: 1000, r: '1 GB', c: '40%' },
-            { n: '2GB Server', p: 2000, r: '2 GB', c: '50%' },
-            { n: '3GB Server', p: 3000, r: '3 GB', c: '60%' },
-            { n: '4GB Server', p: 5000, r: '4 GB', c: '70%' },
-            { n: '5GB Server', p: 6000, r: '5 GB', c: '80%' },
-            { n: '6GB Server', p: 7000, r: '6 GB', c: '90%' },
-            { n: '7GB Server', p: 8000, r: '7 GB', c: '95%' },
-            { n: '8GB Server', p: 9000, r: '8 GB', c: '100%' },
-            { n: '9GB Server', p: 10000, r: '9 GB', c: '105%' },
-            { n: '10GB Server', p: 11000, r: '10 GB', c: '110%' },
-            { n: 'UNLIMITED SULTAN', p: 13000, r: 'Unlimited', c: 'Unlimited' }
+          const paket = [
+            { n: '1GB Hemat', p: 1000, r: '1 GB' },
+            { n: '2GB Starter', p: 2000, r: '2 GB' },
+            { n: '3GB Medium', p: 3000, r: '3 GB' },
+            { n: '4GB Gaming', p: 5000, r: '4 GB' },
+            { n: '5GB Pro', p: 6000, r: '5 GB' },
+            { n: '6GB Streaming', p: 7000, r: '6 GB' },
+            { n: 'UNLIMITED SULTAN', p: 13000, r: 'Unlimited' }
           ];
-
-          dataPaket.forEach(pkg => {
+          paket.forEach(s => {
             document.write(`
               <div class="col-6 col-md-4 col-xl-3">
-                <div class="card item-card h-100" onclick="pilihPaket(this, '${pkg.n}', ${pkg.p}, '${pkg.r}')">
-                  <div class="card-header fw-bold small text-truncate">${pkg.n}</div>
+                <div class="card item-card" onclick="pilih(this, '${s.n}', ${s.p})">
+                  <div class="card-header fw-bold small">${s.n}</div>
                   <div class="card-body p-3">
-                    <h5 class="card-title mb-2 text-primary">Rp ${pkg.p.toLocaleString('id-ID')}</h5>
-                    <div class="text-white-50 small">
-                      RAM: ${pkg.r}<br>CPU: ${pkg.c}<br>Disk: ${pkg.r}
-                    </div>
+                    <h4 class="text-primary">Rp ${s.p.toLocaleString('id-ID')}</h4>
+                    <div class="small opacity-50">RAM: ${s.r}<br>CPU: 100%<br>Disk: ${s.r}</div>
                   </div>
                 </div>
               </div>
@@ -131,76 +116,53 @@
         </script>
       </div>
 
-      <hr class="divider-custom">
+      <div class="divider-bold"></div>
 
-      <div class="row justify-content-center" id="checkout-section">
-        <div class="col-md-6 col-lg-5">
-          <div class="card bg-dark border shadow-lg">
-            <div class="card-header fw-bold text-white border-bottom border-secondary">
-               <i class="ti ti-shopping-cart me-2"></i>Checkout
-            </div>
+      <div class="row justify-content-center" id="checkout-box">
+        <div class="col-md-5">
+          <div class="card bg-dark text-white border-secondary">
             <div class="card-body">
-              <div class="mb-3">
-                <label class="form-label text-white-50 small">Username Pterodactyl</label>
-                <input type="text" id="username" class="form-control bg-transparent text-white border-secondary" placeholder="Contoh: dalangstore123">
+              <h5 class="text-white mb-3">Checkout Pesanan</h5>
+              <input type="text" id="username" class="form-control bg-transparent text-white border-secondary mb-3" placeholder="Masukkan Username.">
+              <div class="d-flex justify-content-between mb-4">
+                <span>TOTAL:</span>
+                <span class="h4 text-primary mb-0" id="total-text">Rp 0</span>
               </div>
-              <div class="p-3 bg-secondary bg-opacity-10 rounded border border-secondary mb-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="text-white-50 small">TOTAL BAYAR:</span>
-                  <span class="h4 mb-0 text-primary fw-bold" id="total-text">Rp 1.000</span>
-                </div>
-              </div>
-              <button class="btn btn-primary w-100 py-2 fw-bold" onclick="prosesBayar()">BAYAR SEKARANG</button>
+              <button class="btn btn-primary w-100 py-2 fw-bold" onclick="bayar()">Bayar Sekarang</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer-custom text-center">
+  <footer>
     <div class="container">
-      <h5 class="text-white mb-2">Dalang Store</h5>
-      <p class="text-white-50 small mb-1">© 2026 High Performance Hosting. All Rights Reserved.</p>
-      <p class="text-white-50 small">Powered by Mantis | Build by <strong>AortaVx</strong></p>
+      <p class="mb-1 text-white">Dalang Store</p>
+      <p class="small mb-0">© 2026 All Rights Reserved.</p>
+      <p class="small">Powered by Mantis | Build by <strong>AortaVx</strong></p>
     </div>
   </footer>
 
-  <script src="assets/js/plugins/popper.min.js"></script>
-  <script src="assets/js/plugins/bootstrap.min.js"></script>
-
   <script>
-    let currentPkg = { name: '1GB Hemat', price: 1000 };
-
-    function pilihPaket(el, name, price, ram) {
+    let selectedPrice = 0;
+    function pilih(el, name, price) {
       document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
       el.classList.add('selected');
-
-      currentPkg.name = name;
-      currentPkg.price = price;
+      selectedPrice = price;
       document.getElementById('total-text').innerText = 'Rp ' + price.toLocaleString('id-ID');
-
-      // Scroll halus ke checkout
-      document.getElementById('checkout-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('checkout-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    function prosesBayar() {
+    function bayar() {
       const user = document.getElementById('username').value.trim();
-      
-      // Validasi Username (Penting Bre)
+      if (selectedPrice === 0) return alert("Pilih paket dulu bre!");
       if (!user) {
-        alert("❌ WADUH BRE! Username kosong. Masukin dulu username Pterodactyl lu biar gak salah kirim!");
+        alert("Username jangan dikosongin lah!");
         document.getElementById('username').focus();
         return;
       }
-
-      // Kalau aman, lanjut konfirmasi
-      const konfirmasi = confirm(`Konfirmasi Pesanan:\n\nPaket: ${currentPkg.name}\nUsername: ${user}\nTotal: Rp ${currentPkg.price.toLocaleString('id-ID')}\n\nYakin data udah bener?`);
-      
-      if (konfirmasi) {
-        alert("✅ Pesanan Berhasil! Silahkan tunggu konfirmasi selanjutnya.");
-        // Di sini bisa lu tambahin redirect ke payment atau WA
-      }
+      alert("Sip! Username " + user + " sedang diproses.");
     }
   </script>
 </body>
