@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+  <title>Server Manage | Web Cpanel Pterodacyl</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Tempat Beli Panel Berkualitas Dan Bergaransi..">
+  <meta name="keywords" content="Pterodactyl, Server Hosting, Bot Hosting">
+  <meta name="author" content="AortaVx">
+
+  <!-- [Favicon] icon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Google Font] Family -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="../assets/fonts/feather.css" >
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/fontawesome.css" >
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/material.css" >
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
+<link rel="stylesheet" href="../assets/css/style-preset.css" >
+
+<style>
+  .server-card {
+    border: 1px solid rgba(19, 194, 194, 0.2);
+    transition: all 0.3s;
+  }
+  .server-card:hover {
+    box-shadow: 0 0 15px rgba(19, 194, 194, 0.3);
+  }
+  .server-id {
+    color: #13c2c2;
+    font-weight: bold;
+  }
+</style>
+<style>
+  [data-bs-theme="dark"] body { background-color: #121212 !important; }
+  [data-bs-theme="dark"] .card { background-color: #1a1a1a !important; border: 1px solid #2d2d2d; }
+  [data-bs-theme="dark"] .card-header { background-color: #222 !important; border-bottom: 1px solid #333; }
+  [data-bs-theme="dark"] .pc-sidebar { background-color: #111 !important; border-right: 1px solid #222; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link { color: #aaa; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link:hover, [data-bs-theme="dark"] .pc-sidebar .pc-item.active > .pc-link { color: #13c2c2; background: rgba(19, 194, 194, 0.1); }
+  [data-bs-theme="dark"] .pc-micon i { color: #13c2c2; }
+  [data-bs-theme="dark"] .pc-header { background: rgba(18, 18, 18, 0.8) !important; backdrop-filter: blur(8px); border-bottom: 1px solid #222; }
+</style>
+<style>
+  [data-bs-theme="dark"] body { background-color: #121212 !important; }
+  [data-bs-theme="dark"] .card { background-color: #1a1a1a !important; border: 1px solid #2d2d2d; }
+  [data-bs-theme="dark"] .card-header { background-color: #222 !important; border-bottom: 1px solid #333; }
+  [data-bs-theme="dark"] .pc-sidebar { background-color: #111 !important; border-right: 1px solid #222; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link { color: #aaa; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link:hover, [data-bs-theme="dark"] .pc-sidebar .pc-item.active > .pc-link { color: #13c2c2; background: rgba(19, 194, 194, 0.1); }
+  [data-bs-theme="dark"] .pc-micon i { color: #13c2c2; }
+  [data-bs-theme="dark"] .pc-header { background: rgba(18, 18, 18, 0.8) !important; backdrop-filter: blur(8px); border-bottom: 1px solid #222; }
+</style>
+
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="dark" data-bs-theme="dark">
+  <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+  <div class="navbar-wrapper">
+    <div class="m-header">
+      <a href="../dashboard/index.html" class="b-brand text-primary">
+        <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+      </a>
+    </div>
+    <div class="navbar-content">
+      <ul class="pc-navbar">
+        <li class="pc-item">
+          <a href="/" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+            <span class="pc-mtext">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="pc-item pc-caption">
+          <label>Manage</label>
+          <i class="ti ti-dashboard"></i>
+        </li>
+        <li class="pc-item">
+          <a href="/manage/create" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-server"></i></span>
+            <span class="pc-mtext">Create Server</span>
+          </a>
+        </li>
+         <li class="pc-item active">
+          <a href="/manage/list" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-server"></i></span>
+            <span class="pc-mtext">Server Manage</span>
+          </a>
+         </li>
+        <li class="pc-item pc-caption">
+          <label>Other</label>
+          <i class="ti ti-brand-chrome"></i>
+        </li>
+        <li class="pc-item">
+          <a href="#" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-help"></i></span>
+            <span class="pc-mtext">Support</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<header class="pc-header">
+  <div class="header-wrapper">
+<div class="me-auto pc-mob-drp">
+  <ul class="list-unstyled">
+    <li class="pc-h-item pc-sidebar-collapse">
+      <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+    <li class="pc-h-item pc-sidebar-popup">
+      <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="ms-auto">
+  <ul class="list-unstyled">
+    <li class="dropdown pc-h-item header-user-profile">
+      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+        <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+        <span id="header-username">User</span>
+      </a>
+      <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+        <div class="dropdown-header">
+          <div class="d-flex mb-1">
+            <div class="flex-shrink-0">
+              <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h6 class="mb-1" id="profile-username">User</h6>
+              <span>Reseller</span>
+            </div>
+          </div>
+        </div>
+        <div class="pt-2">
+          <a href="/login" class="dropdown-item text-danger">
+            <i class="ti ti-power"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+ </div>
+</header>
+<!-- [ Header ] end -->
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h5 class="m-b-10">Manage</h5>
+              </div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Manage</a></li>
+                <li class="breadcrumb-item" aria-current="page">Server Manage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+             <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 f-w-400 text-center w-100"><i class="ti ti-server me-1"></i> List Servers</h5>
+             </div>
+             <div class="card-body">
+                <div id="server-list" class="row">
+                   <!-- Servers will be loaded here -->
+                   <div class="col-12 text-center p-5">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+  <!-- [ Main Content ] end -->
+
+  <!-- Modal Detail -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-info" id="modalServerId">Server ID: 0</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalBody">
+           <!-- Detail content -->
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-danger w-100" id="btn-delete-confirm">
+             <i class="ti ti-trash me-1"></i> Delete Server
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+      <div class="row">
+        <div class="col-sm my-1">
+          <p class="m-0">Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Required Js -->
+  <script src="../assets/js/plugins/popper.min.js"></script>
+  <script src="../assets/js/plugins/simplebar.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+  <script src="../assets/js/fonts/custom-font.js"></script>
+  <script src="../assets/js/pcoded.js"></script>
+  <script src="../assets/js/plugins/feather.min.js"></script>
+
+  <script>
+    layout_change('dark');
+    preset_change("preset-1");
+    font_change("Public-Sans");
+
+    let selectedServerId = null;
+    const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+
+    // Fetch user info
+    fetch('/api/user')
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn) {
+          document.getElementById('header-username').innerText = data.user;
+          document.getElementById('profile-username').innerText = data.user;
+        }
+      });
+
+    async function loadServers() {
+      try {
+        const response = await fetch('/api/list-servers');
+        const result = await response.json();
+        const serverList = document.getElementById('server-list');
+        serverList.innerHTML = '';
+
+        if (result.error) {
+           serverList.innerHTML = `<div class="col-12 text-center text-danger">${result.error}</div>`;
+           return;
+        }
+
+        const servers = result.data || [];
+        if (servers.length === 0) {
+           serverList.innerHTML = `<div class="col-12 text-center text-muted">No servers found.</div>`;
+           return;
+        }
+
+        servers.forEach(server => {
+           const card = document.createElement('div');
+           card.className = 'col-md-6 col-lg-4 mb-4';
+           card.innerHTML = `
+             <div class="card server-card h-100">
+               <div class="card-body">
+                 <h6 class="server-id">Server ID: ${server.id}</h6>
+                 <p class="mb-3"><strong>Name:</strong> ${server.name}</p>
+                 <button class="btn btn-primary w-100" onclick="showDetail(${server.id}, '${server.name}', '${server.memory}', '${server.disk}', '${server.cpu}', '${server.description}')">
+                   <i class="ti ti-info-circle me-1"></i> User Info
+                 </button>
+               </div>
+             </div>
+           `;
+           serverList.appendChild(card);
+        });
+      } catch (err) {
+        console.error(err);
+        document.getElementById('server-list').innerHTML = `<div class="col-12 text-center text-danger">Failed to load servers.</div>`;
+      }
+    }
+
+    function showDetail(id, name, memory, disk, cpu, desc) {
+      selectedServerId = id;
+      document.getElementById('modalServerId').innerText = `Server ID: ${id}`;
+      document.getElementById('modalBody').innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Description:</strong> ${desc || 'No description'}</p>
+        <p><strong>Memory:</strong> ${memory}</p>
+        <p><strong>Disk:</strong> ${disk}</p>
+        <p><strong>CPU:</strong> ${cpu}</p>
+      `;
+      detailModal.show();
+    }
+
+    document.getElementById('btn-delete-confirm').addEventListener('click', async () => {
+       if (!selectedServerId) return;
+       if (!confirm('Are you sure you want to delete this server?')) return;
+
+       try {
+          const response = await fetch(`/api/delete-server/${selectedServerId}`, { method: 'DELETE' });
+          const result = await response.json();
+          if (response.ok && !result.error) {
+             alert('Server deleted successfully!');
+             detailModal.hide();
+             loadServers();
+          } else {
+             alert(result.error || 'Failed to delete server.');
+          }
+       } catch (err) {
+          console.error(err);
+          alert('Error deleting server.');
+       }
+    });
+
+    loadServers();
+  </script>
+</body>
+</html>
