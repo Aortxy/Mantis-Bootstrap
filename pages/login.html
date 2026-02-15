@@ -15,11 +15,11 @@
       padding: 0;
       height: 100%;
       font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      /* Grid Kotak-kotak Putih Tipis */
+      background-color: #f4f7fa;
+      /* Grid Kotak-kotak Hitam Tipis */
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
       background-size: 35px 35px;
     }
 
@@ -37,9 +37,10 @@
       width: 100%;
       max-width: 420px;
       border: none;
-      border-radius: 12px; /* Lebih halus sikunya */
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       overflow: hidden;
+      background-color: #ffffff;
     }
 
     .card-header {
@@ -69,11 +70,14 @@
       border: 1px solid #e0e0e0;
       border-radius: 8px;
       font-size: 0.9rem;
+      background-color: #fff;
+      color: #333;
     }
 
     .form-control:focus {
       border-color: #0d6efd;
       box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+      background-color: #fff;
     }
 
     /* Password Toggle */
@@ -140,8 +144,8 @@
         <p class="text-muted small mb-4">Tidak punya akun? <a href="https://wa.me/6281234567890" class="link-owner">Hubungi Owner</a></p>
         
         <div class="mb-3">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="Masukkan email Anda">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" id="emailInput" placeholder="Masukkan username Anda">
         </div>
 
         <div class="mb-4">
@@ -160,7 +164,7 @@
         </div>
 
         <div class="d-grid">
-          <button type="button" class="btn btn-primary" onclick="validate()">Login</button>
+          <button type="button" class="btn btn-primary" id="loginBtn" onclick="validate()">Login</button>
         </div>
       </div>
     </div>
@@ -171,7 +175,6 @@
   </div>
 
   <script>
-    // Logika mata sesuai request: ti-eye (tutup), ti-eye-off (buka)
     function togglePass() {
       const field = document.getElementById('passwordInput');
       const icon = document.getElementById('eyeIcon');
@@ -185,13 +188,41 @@
       }
     }
 
-    function validate() {
-      const email = document.getElementById('emailInput').value;
-      if (!email.includes('@gmail.com')) {
-        alert('Gunakan email @gmail.com yang valid, bre!');
+    async function validate() {
+      const username = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+      const btn = document.getElementById('loginBtn');
+
+      if (!username || !password) {
+        alert('Harap isi username dan password!');
         return;
       }
-      alert('Login Sukses! Gasskeun.');
+
+      btn.disabled = true;
+      btn.innerText = 'Logging in...';
+
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          window.location.href = '/';
+        } else {
+          alert(data.error || 'Login gagal!');
+          btn.disabled = false;
+          btn.innerText = 'Login';
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Terjadi kesalahan saat login.');
+        btn.disabled = false;
+        btn.innerText = 'Login';
+      }
     }
   </script>
 </body>

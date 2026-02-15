@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Home | Web Cpanel Pterodacyl</title>
+  <title>Create Server | Web Cpanel Pterodacyl</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -27,11 +27,106 @@
 <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
 <link rel="stylesheet" href="../assets/css/style-preset.css" >
 
+<style>
+    /* Custom style for RAM options */
+    .ram-option {
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid #eef2f6;
+      background: #fff;
+    }
+    .ram-option:hover {
+      border-color: #13c2c2;
+      background: rgba(19, 194, 194, 0.05);
+    }
+    .ram-option.active {
+      border-color: #13c2c2;
+      background: rgba(19, 194, 194, 0.1);
+      box-shadow: 0 0 10px rgba(19, 194, 194, 0.2);
+    }
+    .ram-option h5 {
+       margin-bottom: 5px;
+       color: #1a1a1a;
+    }
+    .ram-option p {
+       font-size: 0.8rem;
+       margin-bottom: 0;
+       color: #666;
+    }
+
+    /* Modal Styling - Light Version */
+    .modal-content-custom {
+      background-color: #ffffff;
+      color: #262626;
+      border-radius: 15px;
+      border: 1px solid #eef2f6;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .modal-header-custom {
+      border-bottom: none;
+      padding: 20px 20px 10px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .modal-header-custom h4 {
+      margin: 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1a1a1a;
+    }
+    .modal-body-custom {
+      padding: 10px 25px 25px;
+    }
+    .detail-item {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #f1f1f1;
+    }
+    .detail-label {
+      font-weight: 600;
+      color: #666;
+    }
+    .detail-value {
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+    .btn-close-custom {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: none;
+      border: none;
+      color: #999;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .copyright-note {
+      text-align: center;
+      margin-top: 10px;
+      color: #0d6efd;
+      font-size: 0.8rem;
+    }
+</style>
+
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
 
-<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light" data-bs-theme="light">
   <!-- [ Pre-loader ] start -->
 <div class="loader-bg">
   <div class="loader-track">
@@ -43,15 +138,14 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="../dashboard/index.html" class="b-brand text-primary">
-        <!-- ========   Change your logo from here   ============ -->
+      <a href="/" class="b-brand text-primary">
         <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
       </a>
     </div>
     <div class="navbar-content">
       <ul class="pc-navbar">
         <li class="pc-item">
-          <a href="../dashboard/index.html" class="pc-link">
+          <a href="/" class="pc-link">
             <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
             <span class="pc-mtext">Dashboard</span>
           </a>
@@ -61,44 +155,26 @@
           <label>Manage</label>
           <i class="ti ti-dashboard"></i>
         </li>
-        <li class="pc-item">
-          <a href="../pages/price.html" class="pc-link">
+        <li class="pc-item active">
+          <a href="/manage/create" class="pc-link">
             <span class="pc-micon"><i class="ti ti-server"></i></span>
             <span class="pc-mtext">Create Server</span>
           </a>
         </li>
          <li class="pc-item">
-          <a href="../pages/price.html" class="pc-link">
+          <a href="/manage/list" class="pc-link">
             <span class="pc-micon"><i class="ti ti-server"></i></span>
             <span class="pc-mtext">Server Manage</span>
           </a>
          </li>
-        <li class="pc-item">
-          <a href="../pages/price.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-user"></i></span>
-            <span class="pc-mtext">User Manage</span>
-          </a>
-        </li>
-        <li class="pc-item">
-          <a href="../elements/icon-tabler.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-            <span class="pc-mtext">Icons</span>
-          </a>
-        </li>
         <li class="pc-item pc-caption">
           <label>Other</label>
           <i class="ti ti-brand-chrome"></i>
         </li>
         <li class="pc-item">
-          <a href="../other/sample-page.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-activity"></i></span>
-            <span class="pc-mtext">Server Analytic</span>
-          </a>
-        </li>
-        <li class="pc-item">
-          <a href="../other/sample-page.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-alert-octagon"></i></span>
-            <span class="pc-mtext">Information</span>
+          <a href="#" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-help"></i></span>
+            <span class="pc-mtext">Support</span>
           </a>
         </li>
       </ul>
@@ -107,10 +183,9 @@
 </nav>
 <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
 <header class="pc-header">
-  <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+  <div class="header-wrapper">
 <div class="me-auto pc-mob-drp">
   <ul class="list-unstyled">
-    <!-- ======= Menu collapse Icon ===== -->
     <li class="pc-h-item pc-sidebar-collapse">
       <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
         <i class="ti ti-menu-2"></i>
@@ -121,175 +196,40 @@
         <i class="ti ti-menu-2"></i>
       </a>
     </li>
-    <li class="dropdown pc-h-item d-inline-flex d-md-none">
-      <a
-        class="pc-head-link dropdown-toggle arrow-none m-0"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-haspopup="false"
-        aria-expanded="false"
-      >
-        <i class="ti ti-search"></i>
-      </a>
-      <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form class="px-3">
-          <div class="form-group mb-0 d-flex align-items-center">
-            <i data-feather="search"></i>
-            <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
-          </div>
-        </form>
-      </div>
-    </li>
-    <li class="pc-h-item d-none d-md-inline-flex">
-      <form class="header-search">
-        <i data-feather="search" class="icon-search"></i>
-        <input type="search" class="form-control" placeholder="Search here. . .">
-      </form>
-    </li>
   </ul>
 </div>
-<!-- [Mobile Media Block end] -->
 <div class="ms-auto">
   <ul class="list-unstyled">
-    <li class="dropdown pc-h-item">
-      <a
-        class="pc-head-link dropdown-toggle arrow-none me-0"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-haspopup="false"
-        aria-expanded="false"
-      >
-        <i class="ti ti-mail"></i>
+    <li class="dropdown pc-h-item header-user-profile">
+      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+        <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+        <span id="header-username">User</span>
       </a>
-      <div class="dropdown-menu dropdown-notification dropdown-menu-end pc-h-dropdown">
-        <div class="dropdown-header d-flex align-items-center justify-content-between">
-          <h5 class="m-0">Message</h5>
-          <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-x text-danger"></i></a>
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-header px-0 text-wrap header-notification-scroll position-relative" style="max-height: calc(100vh - 215px)">
-          <div class="list-group list-group-flush w-100">
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">3:00 AM</span>
-                  <p class="text-body mb-1">It's <b>Cristina danny's</b> birthday today.</p>
-                  <span class="text-muted">2 min ago</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-1.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">6:00 PM</span>
-                  <p class="text-body mb-1"><b>Aida Burg</b> commented your post.</p>
-                  <span class="text-muted">5 August</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-3.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">2:45 PM</span>
-                  <p class="text-body mb-1"><b>There was a failure to your setup.</b></p>
-                  <span class="text-muted">7 hours ago</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-4.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">9:10 PM</span>
-                  <p class="text-body mb-1"><b>Cristina Danny </b> invited to join <b> Meeting.</b></p>
-                  <span class="text-muted">Daily scrum meeting time</span>
-                </div>
-              </div>
-            </a>
+      <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+        <div class="dropdown-header">
+          <div class="d-flex mb-1">
+            <div class="flex-shrink-0">
+              <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h6 class="mb-1" id="profile-username">User</h6>
+              <span>Reseller</span>
+            </div>
           </div>
         </div>
-        <div class="dropdown-divider"></div>
-        <div class="text-center py-2">
-          <a href="#!" class="link-primary">View all</a>
+        <div class="pt-2">
+          <a href="/login" class="dropdown-item text-danger">
+            <i class="ti ti-power"></i>
+            <span>Logout</span>
+          </a>
         </div>
       </div>
     </li>
-    <li class="dropdown pc-h-item header-user-profile">
-  <a
-    class="pc-head-link dropdown-toggle arrow-none me-0"
-    data-bs-toggle="dropdown"
-    href="#"
-    role="button"
-    aria-haspopup="false"
-    data-bs-auto-close="outside"
-    aria-expanded="false"
-  >
-    <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-    <span>Stebin Ben</span>
-  </a>
-  <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
-    <div class="dropdown-header">
-      <div class="d-flex mb-1">
-        <div class="flex-shrink-0">
-          <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
-        </div>
-        <div class="flex-grow-1 ms-3">
-          <h6 class="mb-1">Reseller</h6>
-          <span>Settings</span>
-        </div>
-        <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
-      </div>
-    </div>
-    
-    <div class="pt-2">
-      <a href="#!" class="dropdown-item">
-        <i class="ti ti-help"></i>
-        <span>Support</span>
-      </a>
-      <a href="#!" class="dropdown-item">
-        <i class="ti ti-user"></i>
-        <span>Account Settings</span>
-      </a>
-      <a href="#!" class="dropdown-item">
-        <i class="ti ti-lock"></i>
-        <span>Privacy Center</span>
-      </a>
-      <a href="#!" class="dropdown-item">
-        <i class="ti ti-messages"></i>
-        <span>Feedback</span>
-      </a>
-      <a href="#!" class="dropdown-item">
-        <i class="ti ti-list"></i>
-        <span>History</span>
-      </a>
-      
-      <div class="dropdown-divider"></div>
-      <a href="#!" class="dropdown-item text-danger">
-        <i class="ti ti-power"></i>
-        <span>Logout</span>
-      </a>
-    </div>
-  </div>
-</li>
+  </ul>
 </div>
  </div>
 </header>
 <!-- [ Header ] end -->
-
-
 
   <!-- [ Main Content ] start -->
   <div class="pc-container">
@@ -300,10 +240,10 @@
           <div class="row align-items-center">
             <div class="col-md-12">
               <div class="page-header-title">
-                <h5 class="m-b-10">Home</h5>
+                <h5 class="m-b-10">Manage</h5>
               </div>
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="javascript: void(0)">Manage</a></li>
                 <li class="breadcrumb-item" aria-current="page">Create Server</li>
               </ul>
@@ -314,64 +254,93 @@
       <!-- [ breadcrumb ] end -->
       <!-- [ Main Content ] start -->
       <div class="row">
-        <!-- [ sample-page ] start -->
-<div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="f-w-400">Your Status:</h5>
-    </div>
-    <div class="card-body">
-      <h2 class="f-w-400 mb-0">Reseller</h2> 
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="f-w-400">Your Key:</h5>
-    </div>
-    <div class="card-body">
-      <h2 class="f-w-400 mb-0">Chghskx</h2>
-    </div>
-  </div>
-</div>
         <div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5>Information</h5>
-    </div>
-    <div class="card-body">
-      <p class="mb-2">
-        <strong>Panel URL:</strong> 
-        <a href="https://cp.yupra.me" target="_blank">https://aortxypanel.my.id</a>
-      </p>
-      
-      <p class="mb-0">
-        <strong>Support:</strong> aortadeveloper@gmail.com
-      </p>
+          <div class="card">
+            <div class="card-header">
+              <h5>Create New Server</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                  <label class="form-label">Server Name</label>
+                  <input type="text" class="form-control" id="serverName" placeholder="My Awesome Server">
+                </div>
+
+                <label class="form-label mb-3">Select Resources</label>
+                <div class="row g-3 mb-4">
+                  <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('panel1gb', this)">
+                      <h5 class="mb-0">1 GB</h5>
+                      <p class="text-muted">Standard</p>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('panel2gb', this)">
+                      <h5 class="mb-0">2 GB</h5>
+                      <p class="text-muted">Professional</p>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('panel3gb', this)">
+                      <h5 class="mb-0">3 GB</h5>
+                      <p class="text-muted">Premium</p>
+                    </div>
+                  </div>
+                   <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('panel4gb', this)">
+                      <h5 class="mb-0">4 GB</h5>
+                      <p class="text-muted">Elite</p>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('panel5gb', this)">
+                      <h5 class="mb-0">5 GB</h5>
+                      <p class="text-muted">Ultimate</p>
+                    </div>
+                  </div>
+                   <div class="col-6 col-md-3">
+                    <div class="card ram-option p-3 text-center" onclick="selectRam('unli', this)">
+                      <h5 class="mb-0">Unlimited</h5>
+                      <p class="text-muted">God Mode</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                  <button type="button" class="btn btn-primary btn-lg" id="createBtn" onclick="createServer()">
+                    <i class="ti ti-plus me-1"></i> Create Server
+                  </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- [ Main Content ] end -->
+
+  <!-- Details Modal -->
+  <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;</button>
+          <h4><i class="ti ti-server"></i> Details Server</h4>
+        </div>
+        <div class="modal-body modal-body-custom" id="modalContent">
+          <!-- Content populated by JS -->
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-                              
-  <!-- [ Main Content ] end -->
   <footer class="pc-footer">
     <div class="footer-wrapper container-fluid">
       <div class="row">
         <div class="col-sm my-1">
-          <p class="m-0"
-            >   Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p
-          >
+          <p class="m-0">Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- [Page Specific JS] start -->
-  <script src="../assets/js/plugins/apexcharts.min.js"></script>
-  <script src="../assets/js/pages/dashboard-default.js"></script>
-  <!-- [Page Specific JS] end -->
   <!-- Required Js -->
   <script src="../assets/js/plugins/popper.min.js"></script>
   <script src="../assets/js/plugins/simplebar.min.js"></script>
@@ -380,15 +349,82 @@
   <script src="../assets/js/pcoded.js"></script>
   <script src="../assets/js/plugins/feather.min.js"></script>
 
-  
-  <script>layout_change('light');</script>
-  <script>change_box_container('false');</script>
-  <script>layout_rtl_change('false');</script>
-  <script>preset_change("preset-1");</script>
-  <script>font_change("Public-Sans");</script>
-    
+  <script>
+    layout_change('light');
+    preset_change("preset-1");
+    font_change("Public-Sans");
 
+    let selectedRamOption = '';
+
+    function selectRam(option, element) {
+      selectedRamOption = option;
+      document.querySelectorAll('.ram-option').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    // Fetch user info
+    fetch('/api/user')
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn) {
+          document.getElementById('header-username').innerText = data.user;
+          document.getElementById('profile-username').innerText = data.user;
+        }
+      });
+
+    async function createServer() {
+      const name = document.getElementById('serverName').value;
+      if (!name) return alert('Please enter a server name');
+      if (!selectedRamOption) return alert('Please select a RAM option');
+
+      const btn = document.getElementById('createBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Creating...';
+
+      try {
+        const response = await fetch('/create-server', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, ramOption: selectedRamOption })
+        });
+
+        const result = await response.json();
+        if (response.ok && !result.error) {
+           showDetails(result.serverInfo);
+        } else {
+           alert(result.message || result.error || 'Failed to create server');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ti ti-plus me-1"></i> Create Server';
+      }
+    }
+
+    function showDetails(data) {
+       const modalContent = document.getElementById('modalContent');
+       modalContent.innerHTML = `
+         <div class="detail-item"><span class="detail-label">Username:</span><span class="detail-value">${data.username}</span></div>
+         <div class="detail-item"><span class="detail-label">Password:</span><span class="detail-value">${data.password}</span></div>
+         <div class="detail-item"><span class="detail-label">Domain:</span><span class="detail-value">cp.yupra.me</span></div>
+         <div class="detail-item"><span class="detail-label">Server ID:</span><span class="detail-value">${data.serverId}</span></div>
+         <div class="detail-item"><span class="detail-label">RAM:</span><span class="detail-value">${data.ram}</span></div>
+         <div class="detail-item"><span class="detail-label">Disk:</span><span class="detail-value">${data.disk}</span></div>
+         <div class="detail-item"><span class="detail-label">CPU:</span><span class="detail-value">${data.cpu}</span></div>
+         <div class="detail-item"><span class="detail-label">Email:</span><span class="detail-value">${data.email}</span></div>
+
+         <div class="footer-note">Terimakasih Telah Mempercayai Layanan Kami</div>
+         <div class="copyright-note">© Qoupay Official</div>
+
+         <div class="d-grid mt-4">
+            <a href="https://cp.yupra.me" target="_blank" class="btn btn-primary">Go to Panel</a>
+         </div>
+       `;
+       const myModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+       myModal.show();
+    }
+  </script>
 </body>
-<!-- [Body] end -->
-
 </html>

@@ -26,9 +26,9 @@ const akunFilePath = path.join(__dirname, 'akun.json');
 
 app.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        return res.redirect('/myadmin'); 
+        return res.redirect('/myadmin');
     }
-    res.sendFile(path.join(__dirname, 'public', 'login.html')); 
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 app.post('/login', (req, res) => {
@@ -48,7 +48,7 @@ app.post('/login', (req, res) => {
             if (akun) {
                 req.session.loggedIn = true; 
                 req.session.user = username;
-                return res.redirect('/'); 
+                return res.redirect('/');
             } else {
                 return res.redirect('/login?error=Username%20atau%20password%20salah!');
             }
@@ -79,15 +79,15 @@ app.get('/create-panel', (req, res) => {
 });
 
 app.get('/list-user', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'user.html')); 
+    res.sendFile(path.join(__dirname, 'public', 'user.html'));
 });
 
 app.get('/list-server', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'server.html')); 
+    res.sendFile(path.join(__dirname, 'public', 'server.html'));
 });
 
 app.get('/create-adp', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'adp.html')); 
+    res.sendFile(path.join(__dirname, 'public', 'adp.html'));
 });
 
   function getValidKeys() {
