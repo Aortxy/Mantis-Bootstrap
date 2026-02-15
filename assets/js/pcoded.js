@@ -272,15 +272,21 @@ window.addEventListener('load', function () {
 var elem = document.querySelectorAll('.pc-sidebar .pc-navbar a');
 for (var l = 0; l < elem.length; l++) {
   var pageUrl = window.location.href.split(/[?#]/)[0];
-  if (elem[l].href == pageUrl && elem[l].getAttribute('href') != '') {
+  var linkUrl = elem[l].href.split(/[?#]/)[0];
+
+  if (linkUrl == pageUrl && elem[l].getAttribute('href') != '' && elem[l].getAttribute('href') != '#') {
     elem[l].parentNode.classList.add('active');
 
-    elem[l].parentNode.parentNode.parentNode.classList.add('pc-trigger');
-    elem[l].parentNode.parentNode.parentNode.classList.add('active');
-    elem[l].parentNode.parentNode.style.display = 'block';
+    if (elem[l].parentNode.parentNode.parentNode.classList.contains('pc-hasmenu')) {
+      elem[l].parentNode.parentNode.parentNode.classList.add('pc-trigger');
+      elem[l].parentNode.parentNode.parentNode.classList.add('active');
+      elem[l].parentNode.parentNode.style.display = 'block';
+    }
 
-    elem[l].parentNode.parentNode.parentNode.parentNode.parentNode.classList.add('pc-trigger');
-    elem[l].parentNode.parentNode.parentNode.parentNode.style.display = 'block';
+    if (elem[l].parentNode.parentNode.parentNode.parentNode.parentNode.classList.contains('pc-hasmenu')) {
+      elem[l].parentNode.parentNode.parentNode.parentNode.parentNode.classList.add('pc-trigger');
+      elem[l].parentNode.parentNode.parentNode.parentNode.style.display = 'block';
+    }
   }
 }
 

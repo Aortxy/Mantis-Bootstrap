@@ -3,14 +3,14 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Pricing | Mantis Bootstrap 5 Admin Template</title>
+  <title>Pricing | Web Cpanel Pterodacyl</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
-  <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
-  <meta name="author" content="CodedThemes">
+  <meta name="description" content="Pricing page for web panel.">
+  <meta name="keywords" content="Pterodactyl, Server Hosting, Bot Hosting">
+  <meta name="author" content="AortaVx">
 
   <!-- [Favicon] icon -->
   <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Google Font] Family -->
@@ -27,11 +27,32 @@
 <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
 <link rel="stylesheet" href="../assets/css/style-preset.css" >
 
+<style>
+  [data-bs-theme="dark"] body { background-color: #121212 !important; }
+  [data-bs-theme="dark"] .card { background-color: #1a1a1a !important; border: 1px solid #2d2d2d; }
+  [data-bs-theme="dark"] .card-header { background-color: #222 !important; border-bottom: 1px solid #333; }
+  [data-bs-theme="dark"] .pc-sidebar { background-color: #111 !important; border-right: 1px solid #222; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link { color: #aaa; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link:hover, [data-bs-theme="dark"] .pc-sidebar .pc-item.active > .pc-link { color: #13c2c2; background: rgba(19, 194, 194, 0.1); }
+  [data-bs-theme="dark"] .pc-micon i { color: #13c2c2; }
+  [data-bs-theme="dark"] .pc-header { background: rgba(18, 18, 18, 0.8) !important; backdrop-filter: blur(8px); border-bottom: 1px solid #222; }
+</style>
+<style>
+  [data-bs-theme="dark"] body { background-color: #121212 !important; }
+  [data-bs-theme="dark"] .card { background-color: #1a1a1a !important; border: 1px solid #2d2d2d; }
+  [data-bs-theme="dark"] .card-header { background-color: #222 !important; border-bottom: 1px solid #333; }
+  [data-bs-theme="dark"] .pc-sidebar { background-color: #111 !important; border-right: 1px solid #222; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link { color: #aaa; }
+  [data-bs-theme="dark"] .pc-sidebar .pc-link:hover, [data-bs-theme="dark"] .pc-sidebar .pc-item.active > .pc-link { color: #13c2c2; background: rgba(19, 194, 194, 0.1); }
+  [data-bs-theme="dark"] .pc-micon i { color: #13c2c2; }
+  [data-bs-theme="dark"] .pc-header { background: rgba(18, 18, 18, 0.8) !important; backdrop-filter: blur(8px); border-bottom: 1px solid #222; }
+</style>
+
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
 
-<body>
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="dark" data-bs-theme="dark">
   <!-- [ Pre-loader ] start -->
 <div class="loader-bg">
   <div class="loader-track">
@@ -43,103 +64,43 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="../dashboard/index.html" class="b-brand text-primary">
-        <!-- ========   Change your logo from here   ============ -->
+      <a href="/" class="b-brand text-primary">
         <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
       </a>
     </div>
     <div class="navbar-content">
       <ul class="pc-navbar">
         <li class="pc-item">
-          <a href="../dashboard/index.html" class="pc-link">
+          <a href="/" class="pc-link">
             <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
             <span class="pc-mtext">Dashboard</span>
           </a>
         </li>
 
         <li class="pc-item pc-caption">
-          <label>UI Components</label>
+          <label>Manage</label>
           <i class="ti ti-dashboard"></i>
         </li>
         <li class="pc-item">
-          <a href="../elements/bc_typography.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-typography"></i></span>
-            <span class="pc-mtext">Typography</span>
+          <a href="/manage/create" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-server"></i></span>
+            <span class="pc-mtext">Create Server</span>
           </a>
         </li>
-        <li class="pc-item">
-          <a href="../elements/bc_color.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-color-swatch"></i></span>
-            <span class="pc-mtext">Color</span>
+         <li class="pc-item">
+          <a href="/manage/list" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-server"></i></span>
+            <span class="pc-mtext">Server Manage</span>
           </a>
-        </li>
-        <li class="pc-item">
-          <a href="../elements/icon-tabler.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-            <span class="pc-mtext">Icons</span>
-          </a>
-        </li>
-
-        <li class="pc-item pc-caption">
-          <label>Pages</label>
-          <i class="ti ti-news"></i>
-        </li>
-        <li class="pc-item">
-          <a href="../pages/login.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-lock"></i></span>
-            <span class="pc-mtext">Login</span>
-          </a>
-        </li>
-        <li class="pc-item">
-          <a href="../pages/register.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
-            <span class="pc-mtext">Register</span>
-          </a>
-        </li>
-
+         </li>
         <li class="pc-item pc-caption">
           <label>Other</label>
           <i class="ti ti-brand-chrome"></i>
         </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="#!" class="pc-link"><span class="pc-micon"><i class="ti ti-menu"></i></span><span class="pc-mtext">Menu
-              levels</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-          <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="#!">Level 2.1</a></li>
-            <li class="pc-item pc-hasmenu">
-              <a href="#!" class="pc-link">Level 2.2<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-              <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
-                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
-                <li class="pc-item pc-hasmenu">
-                  <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-                  <ul class="pc-submenu">
-                    <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
-                    <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li class="pc-item pc-hasmenu">
-              <a href="#!" class="pc-link">Level 2.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-              <ul class="pc-submenu">
-                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
-                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
-                <li class="pc-item pc-hasmenu">
-                  <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-                  <ul class="pc-submenu">
-                    <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
-                    <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
         <li class="pc-item">
-          <a href="../other/sample-page.html" class="pc-link">
-            <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
-            <span class="pc-mtext">Sample page</span>
+          <a href="#" class="pc-link">
+            <span class="pc-micon"><i class="ti ti-help"></i></span>
+            <span class="pc-mtext">Support</span>
           </a>
         </li>
       </ul>
@@ -148,10 +109,9 @@
 </nav>
 <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
 <header class="pc-header">
-  <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+  <div class="header-wrapper">
 <div class="me-auto pc-mob-drp">
   <ul class="list-unstyled">
-    <!-- ======= Menu collapse Icon ===== -->
     <li class="pc-h-item pc-sidebar-collapse">
       <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
         <i class="ti ti-menu-2"></i>
@@ -162,124 +122,14 @@
         <i class="ti ti-menu-2"></i>
       </a>
     </li>
-    <li class="dropdown pc-h-item d-inline-flex d-md-none">
-      <a
-        class="pc-head-link dropdown-toggle arrow-none m-0"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-haspopup="false"
-        aria-expanded="false"
-      >
-        <i class="ti ti-search"></i>
-      </a>
-      <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form class="px-3">
-          <div class="form-group mb-0 d-flex align-items-center">
-            <i data-feather="search"></i>
-            <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
-          </div>
-        </form>
-      </div>
-    </li>
-    <li class="pc-h-item d-none d-md-inline-flex">
-      <form class="header-search">
-        <i data-feather="search" class="icon-search"></i>
-        <input type="search" class="form-control" placeholder="Search here. . .">
-      </form>
-    </li>
   </ul>
 </div>
-<!-- [Mobile Media Block end] -->
 <div class="ms-auto">
   <ul class="list-unstyled">
-    <li class="dropdown pc-h-item">
-      <a
-        class="pc-head-link dropdown-toggle arrow-none me-0"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-haspopup="false"
-        aria-expanded="false"
-      >
-        <i class="ti ti-mail"></i>
-      </a>
-      <div class="dropdown-menu dropdown-notification dropdown-menu-end pc-h-dropdown">
-        <div class="dropdown-header d-flex align-items-center justify-content-between">
-          <h5 class="m-0">Message</h5>
-          <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-x text-danger"></i></a>
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-header px-0 text-wrap header-notification-scroll position-relative" style="max-height: calc(100vh - 215px)">
-          <div class="list-group list-group-flush w-100">
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">3:00 AM</span>
-                  <p class="text-body mb-1">It's <b>Cristina danny's</b> birthday today.</p>
-                  <span class="text-muted">2 min ago</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-1.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">6:00 PM</span>
-                  <p class="text-body mb-1"><b>Aida Burg</b> commented your post.</p>
-                  <span class="text-muted">5 August</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-3.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">2:45 PM</span>
-                  <p class="text-body mb-1"><b>There was a failure to your setup.</b></p>
-                  <span class="text-muted">7 hours ago</span>
-                </div>
-              </div>
-            </a>
-            <a class="list-group-item list-group-item-action">
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <img src="../assets/images/user/avatar-4.jpg" alt="user-image" class="user-avtar">
-                </div>
-                <div class="flex-grow-1 ms-1">
-                  <span class="float-end text-muted">9:10 PM</span>
-                  <p class="text-body mb-1"><b>Cristina Danny </b> invited to join <b> Meeting.</b></p>
-                  <span class="text-muted">Daily scrum meeting time</span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="text-center py-2">
-          <a href="#!" class="link-primary">View all</a>
-        </div>
-      </div>
-    </li>
     <li class="dropdown pc-h-item header-user-profile">
-      <a
-        class="pc-head-link dropdown-toggle arrow-none me-0"
-        data-bs-toggle="dropdown"
-        href="#"
-        role="button"
-        aria-haspopup="false"
-        data-bs-auto-close="outside"
-        aria-expanded="false"
-      >
+      <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
         <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-        <span>Stebin Ben</span>
+        <span id="header-username">User</span>
       </a>
       <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
         <div class="dropdown-header">
@@ -288,85 +138,16 @@
               <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
             </div>
             <div class="flex-grow-1 ms-3">
-              <h6 class="mb-1">Stebin Ben</h6>
-              <span>UI/UX Designer</span>
+              <h6 class="mb-1" id="profile-username">User</h6>
+              <span>Reseller</span>
             </div>
-            <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
           </div>
         </div>
-        <ul class="nav drp-tabs nav-fill nav-tabs" id="mydrpTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link active"
-              id="drp-t1"
-              data-bs-toggle="tab"
-              data-bs-target="#drp-tab-1"
-              type="button"
-              role="tab"
-              aria-controls="drp-tab-1"
-              aria-selected="true"
-              ><i class="ti ti-user"></i> Profile</button
-            >
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="drp-t2"
-              data-bs-toggle="tab"
-              data-bs-target="#drp-tab-2"
-              type="button"
-              role="tab"
-              aria-controls="drp-tab-2"
-              aria-selected="false"
-              ><i class="ti ti-settings"></i> Setting</button
-            >
-          </li>
-        </ul>
-        <div class="tab-content" id="mysrpTabContent">
-          <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1" tabindex="0">
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-edit-circle"></i>
-              <span>Edit Profile</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-user"></i>
-              <span>View Profile</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-clipboard-list"></i>
-              <span>Social Profile</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-wallet"></i>
-              <span>Billing</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-power"></i>
-              <span>Logout</span>
-            </a>
-          </div>
-          <div class="tab-pane fade" id="drp-tab-2" role="tabpanel" aria-labelledby="drp-t2" tabindex="0">
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-help"></i>
-              <span>Support</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-user"></i>
-              <span>Account Settings</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-lock"></i>
-              <span>Privacy Center</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-messages"></i>
-              <span>Feedback</span>
-            </a>
-            <a href="#!" class="dropdown-item">
-              <i class="ti ti-list"></i>
-              <span>History</span>
-            </a>
-          </div>
+        <div class="pt-2">
+          <a href="/login" class="dropdown-item text-danger">
+            <i class="ti ti-power"></i>
+            <span>Logout</span>
+          </a>
         </div>
       </div>
     </li>
@@ -376,134 +157,85 @@
 </header>
 <!-- [ Header ] end -->
 
-
-
   <!-- [ Main Content ] start -->
   <div class="pc-container">
     <div class="pc-content">
-      <!-- [ breadcrumb ] start -->
       <div class="page-header">
         <div class="page-block">
           <div class="row align-items-center">
             <div class="col-md-12">
               <div class="page-header-title">
-                <h5 class="m-b-10">Pricing </h5>
+                <h5 class="m-b-10">Pricing</h5>
               </div>
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="javascript: void(0)">Other</a></li>
-                <li class="breadcrumb-item" aria-current="page">Pricing </li>
+                <li class="breadcrumb-item" aria-current="page">Pricing</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <!-- [ breadcrumb ] end -->
 
-      <!-- [ Main Content ] start -->
-     <div class="col-12 mb-4">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="f-w-400">How To Order</h5>
-    </div>
-    <div class="card-body">
-      <p class="text-primary mb-1">Click start on the package you want, then complete the server details on the next page. </p>
-    </div>
-  </div>
-</div>
-        <!-- [ sample-page ] start -->
+      <div class="row">
+        <div class="col-12 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="f-w-400">Information</h5>
+            </div>
+            <div class="card-body">
+              <p class="text-primary mb-1">Select a package to start your server.</p>
+            </div>
+          </div>
+        </div>
         <div class="col-md-6 col-lg-4">
-  <div class="card price-card">
-    <div class="card-body">
-      <div class="price-icon text-center">
-        <h4 class="mb-0">Standard</h4>
-      </div>
-      <ul class="list-group list-group-flush product-list mb-4">
-        <li class="list-group-item">RAM: 2 GB</li>
-        <li class="list-group-item">CPU: 100%</li>
-        <li class="list-group-item">Disk: 5 GB</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="col-md-6 col-lg-4">
-  <div class="card price-card">
-    <div class="card-body">
-      <div class="price-icon text-center">
-        <h4 class="mb-0">Standard Plus</h4>
-      </div>
-      <div class="price-price my-4 text-center">
-        <h2 class="f-w-400">200 Coins <span class="text-muted h6">/ month</span></h2>
-      </div>
-      <ul class="list-group list-group-flush product-list mb-4">
-        <li class="list-group-item">RAM: 3 GB</li>
-        <li class="list-group-item">CPU: 125%</li>
-        <li class="list-group-item">Disk: 10 GB</li>
-      </ul>
-      <div class="d-grid">
-        <a class="btn btn-primary" href="#">Start</a>
+          <div class="card">
+            <div class="card-body text-center">
+              <h4 class="mb-3">Standard</h4>
+              <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">RAM: 2 GB</li>
+                <li class="list-group-item">CPU: 100%</li>
+                <li class="list-group-item">Disk: 5 GB</li>
+              </ul>
+              <a href="/manage/create" class="btn btn-primary w-100">Start</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-        <!-- [ sample-page ] end -->
-      <!-- [ Main Content ] end -->
-    </div>
-  </div>
-  <!-- [ Main Content ] end -->
+
   <footer class="pc-footer">
     <div class="footer-wrapper container-fluid">
       <div class="row">
         <div class="col-sm my-1">
-          <p class="m-0"
-            >Mantis &#9829; crafted by Team <a href="https://themeforest.net/user/codedthemes" target="_blank">Codedthemes</a></p
-          >
-        </div>
-        <div class="col-sm my-1">
-          <p class="m-0"
-            >Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p
-          >
-        </div>
-        <div class="col-auto my-1">
-          <ul class="list-inline footer-link mb-0">
-            <li class="list-inline-item"><a href="../index.html">Home</a></li>
-          </ul>
+          <p class="m-0">Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p>
         </div>
       </div>
     </div>
-  </footer> <!-- Required Js -->
-<script src="../assets/js/plugins/popper.min.js"></script>
-<script src="../assets/js/plugins/simplebar.min.js"></script>
-<script src="../assets/js/plugins/bootstrap.min.js"></script>
-<script src="../assets/js/fonts/custom-font.js"></script>
-<script src="../assets/js/pcoded.js"></script>
-<script src="../assets/js/plugins/feather.min.js"></script>
+  </footer>
 
+  <!-- Required Js -->
+  <script src="../assets/js/plugins/popper.min.js"></script>
+  <script src="../assets/js/plugins/simplebar.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+  <script src="../assets/js/fonts/custom-font.js"></script>
+  <script src="../assets/js/pcoded.js"></script>
+  <script src="../assets/js/plugins/feather.min.js"></script>
 
+  <script>
+    layout_change('dark');
+    preset_change("preset-1");
+    font_change("Public-Sans");
 
-
-
-<script>layout_change('light');</script>
-
-
-
-
-<script>change_box_container('false');</script>
-
-
-
-<script>layout_rtl_change('false');</script>
-
-
-<script>preset_change("preset-1");</script>
-
-
-<script>font_change("Public-Sans");</script>
-
-    
-
-  
+    fetch('/api/user')
+      .then(res => res.json())
+      .then(data => {
+        if (data.loggedIn) {
+          document.getElementById('header-username').innerText = data.user;
+          document.getElementById('profile-username').innerText = data.user;
+        }
+      });
+  </script>
 </body>
-<!-- [Body] end -->
-
 </html>

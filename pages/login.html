@@ -140,8 +140,8 @@
         <p class="text-muted small mb-4">Tidak punya akun? <a href="https://wa.me/6281234567890" class="link-owner">Hubungi Owner</a></p>
         
         <div class="mb-3">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="emailInput" placeholder="Masukkan email Anda">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" id="emailInput" placeholder="Masukkan username Anda">
         </div>
 
         <div class="mb-4">
@@ -185,13 +185,33 @@
       }
     }
 
-    function validate() {
-      const email = document.getElementById('emailInput').value;
-      if (!email.includes('@gmail.com')) {
-        alert('Gunakan email @gmail.com yang valid, bre!');
+    async function validate() {
+      const username = document.getElementById('emailInput').value; // In this template, emailInput is used for username/email
+      const password = document.getElementById('passwordInput').value;
+
+      if (!username || !password) {
+        alert('Harap isi username dan password!');
         return;
       }
-      alert('Login Sukses! Gasskeun.');
+
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          window.location.href = '/';
+        } else {
+          alert(data.error || 'Login gagal!');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Terjadi kesalahan saat login.');
+      }
     }
   </script>
 </body>

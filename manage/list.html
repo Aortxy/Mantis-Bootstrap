@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Dashboard | Web Cpanel Pterodacyl</title>
+  <title>Server Manage | Web Cpanel Pterodacyl</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -27,6 +27,19 @@
 <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
 <link rel="stylesheet" href="../assets/css/style-preset.css" >
 
+<style>
+  .server-card {
+    border: 1px solid rgba(19, 194, 194, 0.2);
+    transition: all 0.3s;
+  }
+  .server-card:hover {
+    box-shadow: 0 0 15px rgba(19, 194, 194, 0.3);
+  }
+  .server-id {
+    color: #13c2c2;
+    font-weight: bold;
+  }
+</style>
 <style>
   [data-bs-theme="dark"] body { background-color: #121212 !important; }
   [data-bs-theme="dark"] .card { background-color: #1a1a1a !important; border: 1px solid #2d2d2d; }
@@ -64,7 +77,7 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="/" class="b-brand text-primary">
+      <a href="../dashboard/index.html" class="b-brand text-primary">
         <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
       </a>
     </div>
@@ -87,7 +100,7 @@
             <span class="pc-mtext">Create Server</span>
           </a>
         </li>
-         <li class="pc-item">
+         <li class="pc-item active">
           <a href="/manage/list" class="pc-link">
             <span class="pc-micon"><i class="ti ti-server"></i></span>
             <span class="pc-mtext">Server Manage</span>
@@ -166,12 +179,12 @@
           <div class="row align-items-center">
             <div class="col-md-12">
               <div class="page-header-title">
-                <h5 class="m-b-10">Home</h5>
+                <h5 class="m-b-10">Manage</h5>
               </div>
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item" aria-current="page">Home</li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Manage</a></li>
+                <li class="breadcrumb-item" aria-current="page">Server Manage</li>
               </ul>
             </div>
           </div>
@@ -180,54 +193,51 @@
       <!-- [ breadcrumb ] end -->
       <!-- [ Main Content ] start -->
       <div class="row">
-<div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="f-w-400">Your Status:</h5>
-    </div>
-    <div class="card-body">
-      <h2 class="f-w-400 mb-0">Reseller</h2> 
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5 class="f-w-400">Your Key:</h5>
-    </div>
-    <div class="card-body">
-      <h2 class="f-w-400 mb-0" id="display-key">Loading...</h2>
-    </div>
-  </div>
-</div>
         <div class="col-sm-12">
-  <div class="card">
-    <div class="card-header">
-      <h5>Information</h5>
-    </div>
-    <div class="card-body">
-      <p class="mb-2">
-        <strong>Panel URL:</strong> 
-        <a href="https://cp.yupra.me" target="_blank">https://cp.yupra.me</a>
-      </p>
-      
-      <p class="mb-0">
-        <strong>Support:</strong> aortadeveloper@gmail.com
-      </p>
+          <div class="card">
+             <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 f-w-400 text-center w-100"><i class="ti ti-server me-1"></i> List Servers</h5>
+             </div>
+             <div class="card-body">
+                <div id="server-list" class="row">
+                   <!-- Servers will be loaded here -->
+                   <div class="col-12 text-center p-5">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+  <!-- [ Main Content ] end -->
+
+  <!-- Modal Detail -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-info" id="modalServerId">Server ID: 0</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalBody">
+           <!-- Detail content -->
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-danger w-100" id="btn-delete-confirm">
+             <i class="ti ti-trash me-1"></i> Delete Server
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-                              
-  <!-- [ Main Content ] end -->
   <footer class="pc-footer">
     <div class="footer-wrapper container-fluid">
       <div class="row">
         <div class="col-sm my-1">
-          <p class="m-0"
-            >   Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p
-          >
+          <p class="m-0">Aortxy &#9829; Crafted By <a href="https://t.me/aortadev" target="_blank">AortaVx</a></p>
         </div>
       </div>
     </div>
@@ -241,11 +251,13 @@
   <script src="../assets/js/pcoded.js"></script>
   <script src="../assets/js/plugins/feather.min.js"></script>
 
-  
   <script>
     layout_change('dark');
     preset_change("preset-1");
     font_change("Public-Sans");
+
+    let selectedServerId = null;
+    const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
 
     // Fetch user info
     fetch('/api/user')
@@ -254,9 +266,83 @@
         if (data.loggedIn) {
           document.getElementById('header-username').innerText = data.user;
           document.getElementById('profile-username').innerText = data.user;
-          document.getElementById('display-key').innerText = data.validkey || 'No key';
         }
       });
+
+    async function loadServers() {
+      try {
+        const response = await fetch('/api/list-servers');
+        const result = await response.json();
+        const serverList = document.getElementById('server-list');
+        serverList.innerHTML = '';
+
+        if (result.error) {
+           serverList.innerHTML = `<div class="col-12 text-center text-danger">${result.error}</div>`;
+           return;
+        }
+
+        const servers = result.data || [];
+        if (servers.length === 0) {
+           serverList.innerHTML = `<div class="col-12 text-center text-muted">No servers found.</div>`;
+           return;
+        }
+
+        servers.forEach(server => {
+           const card = document.createElement('div');
+           card.className = 'col-md-6 col-lg-4 mb-4';
+           card.innerHTML = `
+             <div class="card server-card h-100">
+               <div class="card-body">
+                 <h6 class="server-id">Server ID: ${server.id}</h6>
+                 <p class="mb-3"><strong>Name:</strong> ${server.name}</p>
+                 <button class="btn btn-primary w-100" onclick="showDetail(${server.id}, '${server.name}', '${server.memory}', '${server.disk}', '${server.cpu}', '${server.description}')">
+                   <i class="ti ti-info-circle me-1"></i> User Info
+                 </button>
+               </div>
+             </div>
+           `;
+           serverList.appendChild(card);
+        });
+      } catch (err) {
+        console.error(err);
+        document.getElementById('server-list').innerHTML = `<div class="col-12 text-center text-danger">Failed to load servers.</div>`;
+      }
+    }
+
+    function showDetail(id, name, memory, disk, cpu, desc) {
+      selectedServerId = id;
+      document.getElementById('modalServerId').innerText = `Server ID: ${id}`;
+      document.getElementById('modalBody').innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Description:</strong> ${desc || 'No description'}</p>
+        <p><strong>Memory:</strong> ${memory}</p>
+        <p><strong>Disk:</strong> ${disk}</p>
+        <p><strong>CPU:</strong> ${cpu}</p>
+      `;
+      detailModal.show();
+    }
+
+    document.getElementById('btn-delete-confirm').addEventListener('click', async () => {
+       if (!selectedServerId) return;
+       if (!confirm('Are you sure you want to delete this server?')) return;
+
+       try {
+          const response = await fetch(`/api/delete-server/${selectedServerId}`, { method: 'DELETE' });
+          const result = await response.json();
+          if (response.ok && !result.error) {
+             alert('Server deleted successfully!');
+             detailModal.hide();
+             loadServers();
+          } else {
+             alert(result.error || 'Failed to delete server.');
+          }
+       } catch (err) {
+          console.error(err);
+          alert('Error deleting server.');
+       }
+    });
+
+    loadServers();
   </script>
 </body>
 </html>
