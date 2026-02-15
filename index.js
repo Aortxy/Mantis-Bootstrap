@@ -11,6 +11,8 @@ const port = 3000;
 const domain = 'https://mypanell.vestia.icu'; //DOMAIN PANEL
 const apikey = 'ptla_I8wLHSLRhxAKlcXNdu3j6AosCDnKoasULxTCXoEI5yp'; // PTLA PANEL
 
+app.use(express.static('public'));
+
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
@@ -18,25 +20,25 @@ app.use(session({
     cookie: { secure: false } 
 }));
 
-const akunFilePath = path.join(__dirname, 'sync', 'akun.json');
+app.use(express.urlencoded({ extended: true }))
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/pages', express.static(path.join(__dirname, 'pages')));
-app.use('/dashboard', express.static(path.join(__dirname, 'dashboard')));
-app.use('/manage', express.static(path.join(__dirname, 'manage')));
+const akunFilePath = path.join(__dirname, 'akun.json');
 
 app.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        return res.redirect('/');
+        return res.redirect('/myadmin');
     }
-    res.sendFile(path.join(__dirname, 'pages', 'login.html'));
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 app.post('/login', (req, res) => {
+    console.log("Login request received");
+
     const { username, password } = req.body;
 
     fs.readFile(akunFilePath, 'utf-8', (err, data) => {
         if (err) {
+            console.error("Error reading akun.json", err);
             return res.status(500).json({ error: 'Terjadi kesalahan saat memuat data akun.' });
         }
         try {
@@ -46,27 +48,15 @@ app.post('/login', (req, res) => {
             if (akun) {
                 req.session.loggedIn = true; 
                 req.session.user = username;
-                req.session.validkey = akun.validkey;
-                return res.json({ success: true, message: 'Login berhasil!' });
+                return res.redirect('/');
             } else {
-                return res.status(401).json({ success: false, error: 'Username atau password salah!' });
+                return res.redirect('/login?error=Username%20atau%20password%20salah!');
             }
         } catch (parseError) {
+            console.error("Error parsing JSON", parseError);
             return res.status(500).json({ error: 'Terjadi kesalahan dalam parsing data akun.' });
         }
     });
-});
-
-app.get('/api/user', (req, res) => {
-    if (req.session.loggedIn) {
-        res.json({
-            loggedIn: true,
-            user: req.session.user,
-            validkey: req.session.validkey
-        });
-    } else {
-        res.json({ loggedIn: false });
-    }
 });
 
 const isAuthenticated = (req, res, next) => {
@@ -76,64 +66,155 @@ const isAuthenticated = (req, res, next) => {
     next();
 };
 
-app.get('/', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard', 'index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/manage/create', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'manage', 'create.html'));
+app.get('/nodes', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'nodes.html'));
 });
 
-app.get('/manage/list', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'manage', 'list.html'));
-});
-
-app.get('/nodes', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'coming-soon.html'));
+app.get('/create-panel', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'panel.html'));
 });
 
 app.get('/list-user', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'under-construction.html'));
+    res.sendFile(path.join(__dirname, 'public', 'user.html'));
+});
+
+app.get('/list-server', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'server.html'));
 });
 
 app.get('/create-adp', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'under-construction.html'));
+    res.sendFile(path.join(__dirname, 'public', 'adp.html'));
 });
 
+  function getValidKeys() {
+    const keyData = fs.readFileSync('key.json');
+    const keyList = JSON.parse(keyData);
+    return keyList.keys;
+}
+
+function getValidKeys() {
+    try {
+        const filePath = path.join(__dirname, "key.json");
+
+        if (!fs.existsSync(filePath)) {
+            console.error("❌ File key.json tidak ditemukan!");
+            return [];
+        }
+
+        const data = fs.readFileSync(filePath, "utf8");
+        const jsonData = JSON.parse(data);
+
+        if (!jsonData.validKeys || !Array.isArray(jsonData.validKeys)) {
+            console.error("❌ Format key.json salah! `validKeys` harus berupa array.");
+            return [];
+        }
+
+        console.log("✅ Daftar valid keys berhasil dimuat:", jsonData.validKeys);
+        return jsonData.validKeys;
+    } catch (error) {
+        console.error("❌ Gagal membaca key.json:", error);
+        return [];
+    }
+}
 
 
-app.post('/create-server', isAuthenticated, async (req, res) => {
-    const { name, version, location, memory, disk, key: bodyKey } = req.body;
-    const key = bodyKey || req.session.validkey;
-    const username = req.session.user;
+app.post('/create-server', async (req, res) => {
+    const { username, ramOption, key } = req.body;
+    console.log(`🔑 Received key: ${key}`);
 
-    console.log(`🔑 Creating server for ${username} with key: ${key}`);
+    // Ambil valid keys dari file key.json
+    const validKeys = getValidKeys();
 
-    if (!key) {
-        return res.status(403).json({ message: "❌ Kunci key tidak ditemukan!" });
+    // Cek apakah validKeys berbentuk array
+    if (!Array.isArray(validKeys)) {
+        return res.status(500).json({ message: "❌ Terjadi kesalahan saat memuat daftar API key." });
     }
 
-    // Verify key against akun.json (since key.json is gone)
-    const accounts = JSON.parse(fs.readFileSync(akunFilePath, 'utf-8'));
-    const isValidKey = accounts.some(acc => acc.validkey === key);
-
-    if (!isValidKey) {
+    // Cek apakah key yang dikirim termasuk dalam daftar validKeys
+    if (!validKeys.includes(key)) {
         return res.status(403).json({ message: "❌ Kunci key tidak valid!" });
     }
 
-    if (!name || !memory || !disk) {
-        return res.status(400).json({ message: "❌ Nama, Memory, dan Disk harus diisi!" });
+    if (!username || !ramOption) {
+        return res.status(400).json({ message: "❌ Semua input harus diisi!" });
     }
 
-    // Simple mapping for the external API (can be improved)
-    const ram = parseInt(memory);
-    const diskSize = parseInt(disk);
-    const cpu = 100; // Default CPU 100%
+    let ram, disk, cpu;
+
+    switch (ramOption) {
+        case "panel1gb":
+            ram = 1000; disk = 1000; cpu = 50;
+            break;
+        case "panel2gb":
+            ram = 2000; disk = 2000; cpu = 100;
+            break;
+        case "panel3gb":
+            ram = 3000; disk = 3000; cpu = 150;
+            break;
+        case "panel4gb":
+            ram = 4000; disk = 4000; cpu = 200;
+            break;
+        case "panel5gb":
+            ram = 5000; disk = 5000; cpu = 250;
+            break;
+        case "panel6gb":
+            ram = 6000; disk = 6000; cpu = 300;
+            break;
+        case "panel7gb":
+            ram = 7000; disk = 7000; cpu = 350;
+            break;
+        case "panel8gb":
+            ram = 8000; disk = 8000; cpu = 400;
+            break;
+        case "panel9gb":
+            ram = 9000; disk = 9000; cpu = 450;
+            break;
+        case "panel10gb":
+            ram = 10000; disk = 10000; cpu = 500;
+            break;
+        case "panel11gb":
+            ram = 11000; disk = 11000; cpu = 550;
+            break;
+        case "panel12gb":
+            ram = 12000; disk = 12000; cpu = 600;
+            break;
+        case "panel13gb":
+            ram = 13000; disk = 13000; cpu = 650;
+            break;
+        case "panel14gb":
+            ram = 14000; disk = 14000; cpu = 700;
+            break;
+        case "panel15gb":
+            ram = 15000; disk = 15000; cpu = 750;
+            break;
+        case "panel16gb":
+            ram = 16000; disk = 16000; cpu = 800;
+            break;
+        case "panel17gb":
+            ram = 17000; disk = 17000; cpu = 850;
+            break;
+        case "panel18gb":
+            ram = 18000; disk = 18000; cpu = 900;
+            break;
+        case "panel19gb":
+            ram = 19000; disk = 19000; cpu = 950;
+            break;
+        case "panel20gb":
+            ram = 20000; disk = 20000; cpu = 1000;
+            break;
+        case "unlimited":
+            ram = 0; disk = 0; cpu = 0;
+            break;
+        default:
+            return res.status(400).json({ message: "❌ Pilihan RAM tidak valid!" });
+    }
 
     try {
-        // Using the same external API from previous implementation
-        const apiUrl = `https://apis.xyrezz.online-server.biz.id/api/cpanel?domain=${domain}&apikey=${apikey}&username=${username}&ram=${ram}&disk=${diskSize}&cpu=${cpu}`;
-        const response = await fetch(apiUrl, {
+        const response = await fetch(`https://apis.xyrezz.online-server.biz.id/api/cpanel?domain=${domain}&apikey=${apikey}&username=${username}&ram=${ram}&disk=${disk}&cpu=${cpu}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -143,20 +224,8 @@ app.post('/create-server', isAuthenticated, async (req, res) => {
             return res.status(500).json({ message: `Error: ${data.error}` });
         }
 
-        // Add some extra info for the frontend to display
-        const serverInfo = {
-            id: Math.floor(Math.random() * 1000), // Mock ID if API doesn't provide it
-            name: name,
-            memory: memory,
-            disk: disk,
-            version: version,
-            location: location,
-            ...data
-        };
-
-        res.status(200).json({ message: "✅ Server berhasil dibuat!", serverInfo: serverInfo });
+        res.status(200).json({ message: "✅ Server berhasil dibuat!", serverInfo: data });
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: "❌ Terjadi kesalahan saat membuat server. Harap coba lagi." });
     }
 });
@@ -233,7 +302,7 @@ app.get('/api/list-users', async (req, res) => {
     }
   });
   
-  app.get('/api/list-servers', isAuthenticated, async (req, res) => {
+  app.get('/api/list-servers', async (req, res) => {
     try {
         const page = req.query.page || '1'; 
         const response = await fetch(`${domain}/api/application/servers?page=${page}`, {
